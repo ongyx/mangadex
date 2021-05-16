@@ -9,14 +9,12 @@ API_SPEC_LATEST="$API_SPEC_DIR/latest.yaml"
 
 API_NAME="mangadex_openapi"
 API_DOCS="api_docs"
-API_VERSION="0.0.1"
+API_VERSION="0.0.2"
 
 BUILD_LOG="build.log"
 
+# Any files/folders in this array will be moved out of the old build and then moved into the new build.
 declare -a API_KEEP=("wrapper")
-
-TMP="tmp"
-TMP_CONFIG="tmp.json"
 
 check_commands () {
   for cmd in curl java; do
@@ -25,6 +23,11 @@ check_commands () {
       exit 1
     fi
   done
+}
+
+die () {
+  echo "build failed: $1"
+  exit 1
 }
 
 keep () {
@@ -84,6 +87,10 @@ if [ ! -e $ARTIFACT ]; then
   artifact_download
 fi
 
+TMP=$(mktemp -dq) || die "can't create tempdir"
+TMP_CONFIG=$(mktemp -q) || die "can't create tempfile"
+trap 'rm -rf "$TMP" "$TMP_CONFIG"' EXIT
+
 # create config
 cat << EOF > $TMP_CONFIG
 {
@@ -97,8 +104,6 @@ echo "generating API (full log in $BUILD_LOG)"
 java -jar $ARTIFACT generate -i $API_SPEC_LATEST -o $TMP -l python -c $TMP_CONFIG &>$BUILD_LOG
 
 echo "done"
-
-rm $TMP_CONFIG
 
 keep
 
@@ -115,8 +120,6 @@ mv $TMP/{docs,README.md} $API_DOCS
 mv $TMP/$API_NAME .
 
 restore
-
-rm -r $TMP
 
 echo "patching API"
 
