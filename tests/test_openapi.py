@@ -1,6 +1,6 @@
 # coding: utf8
 
-import mangadex_openapi as mangadex
+import mangadex
 
 # monkeypatch client
 client = mangadex.ApiClient()

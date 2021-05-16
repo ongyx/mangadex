@@ -7,6 +7,8 @@ API_DOCS="api_docs"
 API_VERSION="0.0.1"
 #API_VERISON=$(grep -m 1 -oP 'version: \K(.*)$' api.yaml)
 
+declare -a API_KEEP=("wrapper")
+
 TMP="tmp"
 TMP_CONFIG="tmp.json"
 
@@ -29,9 +31,13 @@ cat << EOF > $TMP_CONFIG
 }
 EOF
 
+# keep certain folders
+for folder in "${API_KEEP[@]}"; do
+  mv $API_PATH/$folder .
+done
+
 java -jar $ARTIFACT generate -i api.yaml -o $TMP -l python -c $TMP_CONFIG
 
-# move docs to its own folder
 for folder in $API_DOCS $API_PATH; do
   if [ -d $folder ]; then
     rm -r $folder
@@ -42,6 +48,11 @@ mkdir $API_DOCS
 
 mv $TMP/{docs,README.md} $API_DOCS
 mv $TMP/$API_NAME $API_PATH
+
+# restore kept folders to new build
+for folder in "${API_KEEP[@]}"; do
+  mv $folder $API_PATH/
+done
 
 rm -r $TMP
 rm $TMP_CONFIG
