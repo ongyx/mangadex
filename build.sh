@@ -11,15 +11,17 @@ API_NAME="mangadex"
 API_DOCS="api_docs"
 API_VERSION="0.0.1"
 
+BUILD_LOG="build.log"
+
 declare -a API_KEEP=("wrapper")
 
 TMP="tmp"
 TMP_CONFIG="tmp.json"
 
 check_commands () {
-  for cmd in curl diff java; do
+  for cmd in curl java; do
     if ! hash $cmd 2>/dev/null; then
-      echo "Command $cmd required, go install it first."
+      echo "command $cmd required, go install it first."
       exit 1
     fi
   done
@@ -38,11 +40,11 @@ restore () {
 }
 
 artifact_download () {
-  curl -Lo $ARTIFACT $ARTIFACT_URL  
+  curl --progress-bar -Lo $ARTIFACT $ARTIFACT_URL  
 }
 
 spec_download () {
-  curl -Lo $API_SPEC_LATEST $API_SPEC_URL
+  curl --progress-bar -Lo $API_SPEC_LATEST $API_SPEC_URL
 }
 
 spec_create () {
@@ -54,28 +56,28 @@ spec_update () {
   old_filesize=$(du -b $API_SPEC_LATEST | cut -f 1)
   old_version=$(grep -m 1 -oP 'version: \K(.*)$' $API_SPEC_LATEST)
 
-  new_filesize=$(curl -I $API_SPEC_URL | grep -m 1 -oP 'content-length: \K(.*)$')
+  new_filesize=$(curl -Is $API_SPEC_URL | grep -m 1 -oP 'content-length: \K(.*)$' | tr -d '\r')
 
-  if [ new_filesize != old_filesize ]; then
-    echo "update detected, downloading"
+  if [ $new_filesize != $old_filesize ]; then
+    echo "changes detected, downloading"
 
     mv $API_SPEC_LATEST "$API_SPEC_DIR/${old_version}.yaml"
     spec_download
   else
-    echo "no update detected"
+    echo "no changes detected"
   fi
 }
 
 check_commands
 
+echo "pinging Mangadex for any spec changes..."
+
 if [ ! -d $API_SPEC_DIR ]; then
-  echo "creating spec"
+  echo "spec not found, downloading"
   spec_create
 else
-  echo "updating spec"
   spec_update
 fi
-
 
 if [ ! -e $ARTIFACT ]; then
   echo "codegen not found, downloading"
@@ -90,7 +92,11 @@ cat << EOF > $TMP_CONFIG
 }
 EOF
 
-java -jar $ARTIFACT generate -i $API_SPEC_LATEST -o $TMP -l python -c $TMP_CONFIG
+echo "generating API (full log in $BUILD_LOG)"
+
+java -jar $ARTIFACT generate -i $API_SPEC_LATEST -o $TMP -l python -c $TMP_CONFIG &>$BUILD_LOG
+
+echo "done"
 
 rm $TMP_CONFIG
 
@@ -112,6 +118,8 @@ restore
 
 rm -r $TMP
 
+echo "patching API"
+
 ###########
 # PATCHES #
 ###########
@@ -129,3 +137,5 @@ cat << "EOF" >> $API_NAME/api_client.py
 
 ApiClient.NATIVE_TYPES_MAPPING["Object"] = object
 EOF
+
+echo "done"

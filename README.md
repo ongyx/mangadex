@@ -30,7 +30,13 @@ Make sure you have installed the following:
 
 The build script will tell you if you haven't installed these yet.
 
+Then, run the build script in a Bash shell:
 
+```bash
+$ ./build.sh
+```
+
+This will download the codegen.jar artifact if it does not exist, update the spec if there are any changes, and (re)generate the API code.
 
 ## Todo
 
