@@ -1,5 +1,7 @@
 # coding: utf-8
 
+# flake8: noqa
+
 """
     MangaDex API
 
@@ -12,107 +14,95 @@
 
 from __future__ import absolute_import
 
-import re  # noqa: F401
+# import apis into sdk package
+from mangadex.api.account_api import AccountApi
+from mangadex.api.at_home_api import AtHomeApi
+from mangadex.api.auth_api import AuthApi
+from mangadex.api.author_api import AuthorApi
+from mangadex.api.captcha_api import CaptchaApi
+from mangadex.api.chapter_api import ChapterApi
+from mangadex.api.custom_list_api import CustomListApi
+from mangadex.api.feed_api import FeedApi
+from mangadex.api.infrastructure_api import InfrastructureApi
+from mangadex.api.legacy_api import LegacyApi
+from mangadex.api.manga_api import MangaApi
+from mangadex.api.scanlation_group_api import ScanlationGroupApi
+from mangadex.api.search_api import SearchApi
+from mangadex.api.user_api import UserApi
+# import ApiClient
+from mangadex.api_client import ApiClient
+from mangadex.configuration import Configuration
+# import models into sdk package
+from mangadex.models.account_activate_response import AccountActivateResponse
+from mangadex.models.author import Author
+from mangadex.models.author_attributes import AuthorAttributes
+from mangadex.models.author_create import AuthorCreate
+from mangadex.models.author_edit import AuthorEdit
+from mangadex.models.author_list import AuthorList
+from mangadex.models.author_response import AuthorResponse
+from mangadex.models.body import Body
+from mangadex.models.chapter import Chapter
+from mangadex.models.chapter_attributes import ChapterAttributes
+from mangadex.models.chapter_edit import ChapterEdit
+from mangadex.models.chapter_list import ChapterList
+from mangadex.models.chapter_request import ChapterRequest
+from mangadex.models.chapter_response import ChapterResponse
+from mangadex.models.check_response import CheckResponse
+from mangadex.models.create_account import CreateAccount
+from mangadex.models.create_scanlation_group import CreateScanlationGroup
+from mangadex.models.custom_list import CustomList
+from mangadex.models.custom_list_attributes import CustomListAttributes
+from mangadex.models.custom_list_create import CustomListCreate
+from mangadex.models.custom_list_edit import CustomListEdit
+from mangadex.models.custom_list_list import CustomListList
+from mangadex.models.custom_list_response import CustomListResponse
+from mangadex.models.error import Error
+from mangadex.models.error_response import ErrorResponse
+from mangadex.models.inline_response200 import InlineResponse200
+from mangadex.models.inline_response2001 import InlineResponse2001
+from mangadex.models.inline_response2002 import InlineResponse2002
+from mangadex.models.inline_response2003 import InlineResponse2003
+from mangadex.models.inline_response2004 import InlineResponse2004
+from mangadex.models.localized_string import LocalizedString
+from mangadex.models.login import Login
+from mangadex.models.login_response import LoginResponse
+from mangadex.models.login_response_token import LoginResponseToken
+from mangadex.models.logout_response import LogoutResponse
+from mangadex.models.manga import Manga
+from mangadex.models.manga_attributes import MangaAttributes
+from mangadex.models.manga_create import MangaCreate
+from mangadex.models.manga_edit import MangaEdit
+from mangadex.models.manga_list import MangaList
+from mangadex.models.manga_request import MangaRequest
+from mangadex.models.manga_response import MangaResponse
+from mangadex.models.mapping_id import MappingId
+from mangadex.models.mapping_id_attributes import MappingIdAttributes
+from mangadex.models.mapping_id_body import MappingIdBody
+from mangadex.models.mapping_id_response import MappingIdResponse
+from mangadex.models.order import Order
+from mangadex.models.order1 import Order1
+from mangadex.models.order2 import Order2
+from mangadex.models.order3 import Order3
+from mangadex.models.order4 import Order4
+from mangadex.models.recover_complete_body import RecoverCompleteBody
+from mangadex.models.refresh_response import RefreshResponse
+from mangadex.models.refresh_token import RefreshToken
+from mangadex.models.relationship import Relationship
+from mangadex.models.response import Response
+from mangadex.models.scanlation_group import ScanlationGroup
+from mangadex.models.scanlation_group_attributes import ScanlationGroupAttributes
+from mangadex.models.scanlation_group_edit import ScanlationGroupEdit
+from mangadex.models.scanlation_group_list import ScanlationGroupList
+from mangadex.models.scanlation_group_response import ScanlationGroupResponse
+from mangadex.models.scanlation_group_response_relationships import ScanlationGroupResponseRelationships
+from mangadex.models.send_account_activation_code import SendAccountActivationCode
+from mangadex.models.tag import Tag
+from mangadex.models.tag_attributes import TagAttributes
+from mangadex.models.tag_response import TagResponse
+from mangadex.models.update_manga_status import UpdateMangaStatus
+from mangadex.models.user import User
+from mangadex.models.user_attributes import UserAttributes
+from mangadex.models.user_list import UserList
+from mangadex.models.user_response import UserResponse
 
-# python 2 and python 3 compatibility library
-import six
-
-from mangadex_openapi.api_client import ApiClient
-
-
-class InfrastructureApi(object):
-    """NOTE: This class is auto generated by the swagger code generator program.
-
-    Do not edit the class manually.
-    Ref: https://github.com/swagger-api/swagger-codegen
-    """
-
-    def __init__(self, api_client=None):
-        if api_client is None:
-            api_client = ApiClient()
-        self.api_client = api_client
-
-    def ping_get(self, **kwargs):  # noqa: E501
-        """Ping the server  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.ping_get(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :return: str
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.ping_get_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.ping_get_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def ping_get_with_http_info(self, **kwargs):  # noqa: E501
-        """Ping the server  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.ping_get_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :return: str
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method ping_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = []  # noqa: E501
-
-        return self.api_client.call_api(
-            '/ping', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='str',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
+__version__ = "0.0.1"

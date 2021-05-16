@@ -1,4 +1,4 @@
-# mangadex_openapi.ScanlationGroupApi
+# mangadex.ScanlationGroupApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -22,13 +22,13 @@ Delete Scanlation Group
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ScanlationGroupApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Scanlation Group ID
 
 try:
@@ -69,13 +69,13 @@ Unfollow Scanlation Group
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ScanlationGroupApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -116,12 +116,12 @@ View Scanlation Group
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi()
+api_instance = mangadex.ScanlationGroupApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Scanlation Group ID
 
 try:
@@ -162,12 +162,12 @@ Scanlation Group list
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi()
+api_instance = mangadex.ScanlationGroupApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | ScanlationGroup ids (limited to 100 per request) (optional)
@@ -214,13 +214,13 @@ Get logged User followed Groups
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ScanlationGroupApi(mangadex.ApiClient(configuration))
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 
@@ -263,14 +263,14 @@ Create Scanlation Group
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi(mangadex_openapi.ApiClient(configuration))
-body = mangadex_openapi.CreateScanlationGroup() # CreateScanlationGroup | The size of the body is limited to 8KB. (optional)
+api_instance = mangadex.ScanlationGroupApi(mangadex.ApiClient(configuration))
+body = mangadex.CreateScanlationGroup() # CreateScanlationGroup | The size of the body is limited to 8KB. (optional)
 
 try:
     # Create Scanlation Group
@@ -310,13 +310,13 @@ Follow Scanlation Group
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ScanlationGroupApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -357,15 +357,15 @@ Update Scanlation Group
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ScanlationGroupApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ScanlationGroupApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Scanlation Group ID
-body = mangadex_openapi.ScanlationGroupEdit() # ScanlationGroupEdit | The size of the body is limited to 8KB. (optional)
+body = mangadex.ScanlationGroupEdit() # ScanlationGroupEdit | The size of the body is limited to 8KB. (optional)
 
 try:
     # Update Scanlation Group

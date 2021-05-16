@@ -1,4 +1,4 @@
-# mangadex_openapi.ChapterApi
+# mangadex.ChapterApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -22,13 +22,13 @@ Mark chapter as read for the current user
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ChapterApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ChapterApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -71,13 +71,13 @@ Mark chapter as unread for the current user
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ChapterApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ChapterApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -118,13 +118,13 @@ Delete Chapter
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ChapterApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ChapterApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Chapter ID
 
 try:
@@ -167,12 +167,12 @@ Chapter list. If you want the Chapters of a given Manga, please check the feed e
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ChapterApi()
+api_instance = mangadex.ChapterApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | Chapter ids (limited to 100 per request) (optional)
@@ -186,7 +186,7 @@ translated_language = 'translated_language_example' # str |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex_openapi.Order1() # Order1 |  (optional)
+order = mangadex.Order1() # Order1 |  (optional)
 
 try:
     # Chapter list
@@ -239,12 +239,12 @@ Get Chapter
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ChapterApi()
+api_instance = mangadex.ChapterApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Chapter ID
 
 try:
@@ -285,15 +285,15 @@ Update Chapter
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.ChapterApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.ChapterApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Chapter ID
-body = mangadex_openapi.ChapterEdit() # ChapterEdit | The size of the body is limited to 32KB. (optional)
+body = mangadex.ChapterEdit() # ChapterEdit | The size of the body is limited to 32KB. (optional)
 
 try:
     # Update Chapter

@@ -1,4 +1,4 @@
-# mangadex_openapi.AccountApi
+# mangadex.AccountApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -19,12 +19,12 @@ Activate account
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AccountApi()
+api_instance = mangadex.AccountApi()
 code = 'code_example' # str | 
 
 try:
@@ -65,13 +65,13 @@ Resend Activation code
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AccountApi()
-body = mangadex_openapi.SendAccountActivationCode() # SendAccountActivationCode | The size of the body is limited to 1KB. (optional)
+api_instance = mangadex.AccountApi()
+body = mangadex.SendAccountActivationCode() # SendAccountActivationCode | The size of the body is limited to 1KB. (optional)
 
 try:
     # Resend Activation code
@@ -111,13 +111,13 @@ Create Account
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AccountApi()
-body = mangadex_openapi.CreateAccount() # CreateAccount | The size of the body is limited to 4KB. (optional)
+api_instance = mangadex.AccountApi()
+body = mangadex.CreateAccount() # CreateAccount | The size of the body is limited to 4KB. (optional)
 
 try:
     # Create Account
@@ -157,13 +157,13 @@ Recover given Account
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AccountApi()
-body = mangadex_openapi.SendAccountActivationCode() # SendAccountActivationCode | The size of the body is limited to 1KB. (optional)
+api_instance = mangadex.AccountApi()
+body = mangadex.SendAccountActivationCode() # SendAccountActivationCode | The size of the body is limited to 1KB. (optional)
 
 try:
     # Recover given Account
@@ -203,14 +203,14 @@ Complete Account recover
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AccountApi()
+api_instance = mangadex.AccountApi()
 code = 'code_example' # str | 
-body = mangadex_openapi.RecoverCompleteBody() # RecoverCompleteBody | The size of the body is limited to 2KB. (optional)
+body = mangadex.RecoverCompleteBody() # RecoverCompleteBody | The size of the body is limited to 2KB. (optional)
 
 try:
     # Complete Account recover

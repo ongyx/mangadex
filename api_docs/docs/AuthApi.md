@@ -1,4 +1,4 @@
-# mangadex_openapi.AuthApi
+# mangadex.AuthApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -18,13 +18,13 @@ Check token
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AuthApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.AuthApi(mangadex.ApiClient(configuration))
 
 try:
     # Check token
@@ -61,13 +61,13 @@ Login
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AuthApi()
-body = mangadex_openapi.Login() # Login | The size of the body is limited to 2KB. (optional)
+api_instance = mangadex.AuthApi()
+body = mangadex.Login() # Login | The size of the body is limited to 2KB. (optional)
 
 try:
     # Login
@@ -107,13 +107,13 @@ Logout
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AuthApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.AuthApi(mangadex.ApiClient(configuration))
 
 try:
     # Logout
@@ -150,13 +150,13 @@ Refresh token
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.AuthApi()
-body = mangadex_openapi.RefreshToken() # RefreshToken | The size of the body is limited to 2KB. (optional)
+api_instance = mangadex.AuthApi()
+body = mangadex.RefreshToken() # RefreshToken | The size of the body is limited to 2KB. (optional)
 
 try:
     # Refresh token

@@ -1,7 +1,5 @@
 # coding: utf-8
 
-# flake8: noqa
-
 """
     MangaDex API
 
@@ -14,95 +12,258 @@
 
 from __future__ import absolute_import
 
-# import apis into sdk package
-from mangadex_openapi.api.account_api import AccountApi
-from mangadex_openapi.api.at_home_api import AtHomeApi
-from mangadex_openapi.api.auth_api import AuthApi
-from mangadex_openapi.api.author_api import AuthorApi
-from mangadex_openapi.api.captcha_api import CaptchaApi
-from mangadex_openapi.api.chapter_api import ChapterApi
-from mangadex_openapi.api.custom_list_api import CustomListApi
-from mangadex_openapi.api.feed_api import FeedApi
-from mangadex_openapi.api.infrastructure_api import InfrastructureApi
-from mangadex_openapi.api.legacy_api import LegacyApi
-from mangadex_openapi.api.manga_api import MangaApi
-from mangadex_openapi.api.scanlation_group_api import ScanlationGroupApi
-from mangadex_openapi.api.search_api import SearchApi
-from mangadex_openapi.api.user_api import UserApi
-# import ApiClient
-from mangadex_openapi.api_client import ApiClient
-from mangadex_openapi.configuration import Configuration
-# import models into sdk package
-from mangadex_openapi.models.account_activate_response import AccountActivateResponse
-from mangadex_openapi.models.author import Author
-from mangadex_openapi.models.author_attributes import AuthorAttributes
-from mangadex_openapi.models.author_create import AuthorCreate
-from mangadex_openapi.models.author_edit import AuthorEdit
-from mangadex_openapi.models.author_list import AuthorList
-from mangadex_openapi.models.author_response import AuthorResponse
-from mangadex_openapi.models.body import Body
-from mangadex_openapi.models.chapter import Chapter
-from mangadex_openapi.models.chapter_attributes import ChapterAttributes
-from mangadex_openapi.models.chapter_edit import ChapterEdit
-from mangadex_openapi.models.chapter_list import ChapterList
-from mangadex_openapi.models.chapter_request import ChapterRequest
-from mangadex_openapi.models.chapter_response import ChapterResponse
-from mangadex_openapi.models.check_response import CheckResponse
-from mangadex_openapi.models.create_account import CreateAccount
-from mangadex_openapi.models.create_scanlation_group import CreateScanlationGroup
-from mangadex_openapi.models.custom_list import CustomList
-from mangadex_openapi.models.custom_list_attributes import CustomListAttributes
-from mangadex_openapi.models.custom_list_create import CustomListCreate
-from mangadex_openapi.models.custom_list_edit import CustomListEdit
-from mangadex_openapi.models.custom_list_list import CustomListList
-from mangadex_openapi.models.custom_list_response import CustomListResponse
-from mangadex_openapi.models.error import Error
-from mangadex_openapi.models.error_response import ErrorResponse
-from mangadex_openapi.models.inline_response200 import InlineResponse200
-from mangadex_openapi.models.inline_response2001 import InlineResponse2001
-from mangadex_openapi.models.inline_response2002 import InlineResponse2002
-from mangadex_openapi.models.inline_response2003 import InlineResponse2003
-from mangadex_openapi.models.inline_response2004 import InlineResponse2004
-from mangadex_openapi.models.localized_string import LocalizedString
-from mangadex_openapi.models.login import Login
-from mangadex_openapi.models.login_response import LoginResponse
-from mangadex_openapi.models.login_response_token import LoginResponseToken
-from mangadex_openapi.models.logout_response import LogoutResponse
-from mangadex_openapi.models.manga import Manga
-from mangadex_openapi.models.manga_attributes import MangaAttributes
-from mangadex_openapi.models.manga_create import MangaCreate
-from mangadex_openapi.models.manga_edit import MangaEdit
-from mangadex_openapi.models.manga_list import MangaList
-from mangadex_openapi.models.manga_request import MangaRequest
-from mangadex_openapi.models.manga_response import MangaResponse
-from mangadex_openapi.models.mapping_id import MappingId
-from mangadex_openapi.models.mapping_id_attributes import MappingIdAttributes
-from mangadex_openapi.models.mapping_id_body import MappingIdBody
-from mangadex_openapi.models.mapping_id_response import MappingIdResponse
-from mangadex_openapi.models.order import Order
-from mangadex_openapi.models.order1 import Order1
-from mangadex_openapi.models.order2 import Order2
-from mangadex_openapi.models.order3 import Order3
-from mangadex_openapi.models.order4 import Order4
-from mangadex_openapi.models.recover_complete_body import RecoverCompleteBody
-from mangadex_openapi.models.refresh_response import RefreshResponse
-from mangadex_openapi.models.refresh_token import RefreshToken
-from mangadex_openapi.models.relationship import Relationship
-from mangadex_openapi.models.response import Response
-from mangadex_openapi.models.scanlation_group import ScanlationGroup
-from mangadex_openapi.models.scanlation_group_attributes import ScanlationGroupAttributes
-from mangadex_openapi.models.scanlation_group_edit import ScanlationGroupEdit
-from mangadex_openapi.models.scanlation_group_list import ScanlationGroupList
-from mangadex_openapi.models.scanlation_group_response import ScanlationGroupResponse
-from mangadex_openapi.models.scanlation_group_response_relationships import ScanlationGroupResponseRelationships
-from mangadex_openapi.models.send_account_activation_code import SendAccountActivationCode
-from mangadex_openapi.models.tag import Tag
-from mangadex_openapi.models.tag_attributes import TagAttributes
-from mangadex_openapi.models.tag_response import TagResponse
-from mangadex_openapi.models.update_manga_status import UpdateMangaStatus
-from mangadex_openapi.models.user import User
-from mangadex_openapi.models.user_attributes import UserAttributes
-from mangadex_openapi.models.user_list import UserList
-from mangadex_openapi.models.user_response import UserResponse
+import re  # noqa: F401
 
-__version__ = "0.0.1"
+# python 2 and python 3 compatibility library
+import six
+
+from mangadex.api_client import ApiClient
+
+
+class FeedApi(object):
+    """NOTE: This class is auto generated by the swagger code generator program.
+
+    Do not edit the class manually.
+    Ref: https://github.com/swagger-api/swagger-codegen
+    """
+
+    def __init__(self, api_client=None):
+        if api_client is None:
+            api_client = ApiClient()
+        self.api_client = api_client
+
+    def get_list_id_feed(self, id, **kwargs):  # noqa: E501
+        """CustomList Manga feed  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_list_id_feed(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param int limit:
+        :param int offset:
+        :param list[str] locales:
+        :param str created_at_since:
+        :param str updated_at_since:
+        :param str publish_at_since:
+        :param Order3 order:
+        :return: ChapterList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_list_id_feed_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_list_id_feed_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def get_list_id_feed_with_http_info(self, id, **kwargs):  # noqa: E501
+        """CustomList Manga feed  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_list_id_feed_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param int limit:
+        :param int offset:
+        :param list[str] locales:
+        :param str created_at_since:
+        :param str updated_at_since:
+        :param str publish_at_since:
+        :param Order3 order:
+        :return: ChapterList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'limit', 'offset', 'locales', 'created_at_since', 'updated_at_since', 'publish_at_since', 'order']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_list_id_feed" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `get_list_id_feed`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'offset' in params:
+            query_params.append(('offset', params['offset']))  # noqa: E501
+        if 'locales' in params:
+            query_params.append(('locales', params['locales']))  # noqa: E501
+            collection_formats['locales'] = 'multi'  # noqa: E501
+        if 'created_at_since' in params:
+            query_params.append(('createdAtSince', params['created_at_since']))  # noqa: E501
+        if 'updated_at_since' in params:
+            query_params.append(('updatedAtSince', params['updated_at_since']))  # noqa: E501
+        if 'publish_at_since' in params:
+            query_params.append(('publishAtSince', params['publish_at_since']))  # noqa: E501
+        if 'order' in params:
+            query_params.append(('order', params['order']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Bearer']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/list/{id}/feed', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ChapterList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_user_follows_manga_feed(self, **kwargs):  # noqa: E501
+        """Get logged User followed Manga feed  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_user_follows_manga_feed(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int limit:
+        :param int offset:
+        :param list[str] locales:
+        :param str created_at_since:
+        :param str updated_at_since:
+        :param str publish_at_since:
+        :param Order2 order:
+        :return: ChapterList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_user_follows_manga_feed_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.get_user_follows_manga_feed_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def get_user_follows_manga_feed_with_http_info(self, **kwargs):  # noqa: E501
+        """Get logged User followed Manga feed  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_user_follows_manga_feed_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int limit:
+        :param int offset:
+        :param list[str] locales:
+        :param str created_at_since:
+        :param str updated_at_since:
+        :param str publish_at_since:
+        :param Order2 order:
+        :return: ChapterList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['limit', 'offset', 'locales', 'created_at_since', 'updated_at_since', 'publish_at_since', 'order']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_user_follows_manga_feed" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'offset' in params:
+            query_params.append(('offset', params['offset']))  # noqa: E501
+        if 'locales' in params:
+            query_params.append(('locales', params['locales']))  # noqa: E501
+            collection_formats['locales'] = 'multi'  # noqa: E501
+        if 'created_at_since' in params:
+            query_params.append(('createdAtSince', params['created_at_since']))  # noqa: E501
+        if 'updated_at_since' in params:
+            query_params.append(('updatedAtSince', params['updated_at_since']))  # noqa: E501
+        if 'publish_at_since' in params:
+            query_params.append(('publishAtSince', params['publish_at_since']))  # noqa: E501
+        if 'order' in params:
+            query_params.append(('order', params['order']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Bearer']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/user/follows/manga/feed', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ChapterList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)

@@ -1,4 +1,4 @@
-# mangadex_openapi.UserApi
+# mangadex.UserApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -19,13 +19,13 @@ Get logged User followed Groups
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.UserApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.UserApi(mangadex.ApiClient(configuration))
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 
@@ -68,13 +68,13 @@ Get logged User followed Manga list
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.UserApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.UserApi(mangadex.ApiClient(configuration))
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 
@@ -117,13 +117,13 @@ Get logged User followed User list
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.UserApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.UserApi(mangadex.ApiClient(configuration))
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 
@@ -166,13 +166,13 @@ Get User
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.UserApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.UserApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | User ID
 
 try:
@@ -213,13 +213,13 @@ Logged User details
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.UserApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.UserApi(mangadex.ApiClient(configuration))
 
 try:
     # Logged User details

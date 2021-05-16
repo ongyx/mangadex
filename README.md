@@ -1,16 +1,30 @@
-# mangadex_openapi
+# mangadex
 
 Python API to mangadex.org, generated using [swagger-codegen](https://github.com/swagger-api/swagger-codegen).
 
 ## Usage
 
-It is possible to use this package directly, but I strongly suggest you use the [higher-level wrapper](https://github.com/ongyx/mangadex) instead. The generated code *may* change at any time because of changes to the underlying OpenAPI document.
+You can directly use the API like this:
 
-## Versioning
+```
+import mangadex
 
-The version of this package will always be in the format 0.y.z (because it may change any time at the discretion of the MangaDex devs).
-This package version does not follow the API version as the generated code may need to be patched because of API updates.
+client = mangadex.ApiClient()
 
-## Docs
+manga_api = mangadex.MangaApi(client)
 
-See [here](api_docs/README.md).
+random_manga = manga_api.get_manga_random()
+```
+
+For more info on using the API, read the auto-generated docs [here](api_docs/README.md).
+
+The generated code *may* change at any time because of changes to the underlying OpenAPI document.
+Hence, the version of this API will remain at 0.y.z until the Mangadex API itself is out of beta (and considered stable).
+
+## Todo
+
+- [ ] Create a wrapper around the API to make it easier to use.
+
+## License
+
+MIT.

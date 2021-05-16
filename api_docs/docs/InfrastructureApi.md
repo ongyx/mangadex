@@ -1,4 +1,4 @@
-# mangadex_openapi.InfrastructureApi
+# mangadex.InfrastructureApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -15,12 +15,12 @@ Ping the server
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.InfrastructureApi()
+api_instance = mangadex.InfrastructureApi()
 
 try:
     # Ping the server

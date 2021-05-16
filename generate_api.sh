@@ -1,7 +1,7 @@
 ARTIFACT_URL="https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.25/swagger-codegen-cli-3.0.25.jar"
 ARTIFACT="codegen.jar"
 
-API_NAME="mangadex_openapi"
+API_NAME="mangadex"
 API_PATH=$(echo $API_NAME | tr '.' '/')
 API_DOCS="api_docs"
 API_VERSION="0.0.1"

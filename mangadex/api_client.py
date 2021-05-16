@@ -22,9 +22,9 @@ import tempfile
 import six
 from six.moves.urllib.parse import quote
 
-from mangadex_openapi.configuration import Configuration
-import mangadex_openapi.models
-from mangadex_openapi import rest
+from mangadex.configuration import Configuration
+import mangadex.models
+from mangadex import rest
 
 
 class ApiClient(object):
@@ -257,7 +257,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(mangadex_openapi.models, klass)
+                klass = getattr(mangadex.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

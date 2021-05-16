@@ -1,4 +1,4 @@
-# mangadex_openapi.MangaApi
+# mangadex.MangaApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -32,13 +32,13 @@ Delete Manga
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
 
 try:
@@ -79,13 +79,13 @@ Unfollow Manga
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -126,13 +126,13 @@ Remove Manga in CustomList
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
 list_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | CustomList ID
 
@@ -177,13 +177,13 @@ A list of chapter ids that are marked as read for the specified manga
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -226,12 +226,12 @@ View Manga.
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi()
+api_instance = mangadex.MangaApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
 
 try:
@@ -272,12 +272,12 @@ Manga feed
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi()
+api_instance = mangadex.MangaApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
 limit = 100 # int |  (optional) (default to 100)
 offset = 56 # int |  (optional)
@@ -285,7 +285,7 @@ locales = ['locales_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex_openapi.Order4() # Order4 |  (optional)
+order = mangadex.Order4() # Order4 |  (optional)
 
 try:
     # Manga feed
@@ -332,13 +332,13 @@ Get a Manga reading status
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -379,12 +379,12 @@ Get a random Manga
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi()
+api_instance = mangadex.MangaApi()
 
 try:
     # Get a random Manga
@@ -421,13 +421,13 @@ Get all Manga reading status for logged User
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 status = 'status_example' # str | Used to filter the list by given status (optional)
 
 try:
@@ -468,12 +468,12 @@ Tag list
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi()
+api_instance = mangadex.MangaApi()
 
 try:
     # Tag list
@@ -512,12 +512,12 @@ Search a list of Manga.
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi()
+api_instance = mangadex.MangaApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 title = 'title_example' # str |  (optional)
@@ -535,7 +535,7 @@ ids = ['ids_example'] # list[str] | Manga ids (limited to 100 per request) (opti
 content_rating = ['content_rating_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
-order = mangadex_openapi.Order() # Order |  (optional)
+order = mangadex.Order() # Order |  (optional)
 
 try:
     # Manga list
@@ -592,13 +592,13 @@ Get logged User followed Manga list
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 
@@ -641,20 +641,20 @@ Get logged User followed Manga feed
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 limit = 100 # int |  (optional) (default to 100)
 offset = 56 # int |  (optional)
 locales = ['locales_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex_openapi.Order2() # Order2 |  (optional)
+order = mangadex.Order2() # Order2 |  (optional)
 
 try:
     # Get logged User followed Manga feed
@@ -702,14 +702,14 @@ Create a new Manga.
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
-body = mangadex_openapi.MangaCreate() # MangaCreate | The size of the body is limited to 16KB. (optional)
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
+body = mangadex.MangaCreate() # MangaCreate | The size of the body is limited to 16KB. (optional)
 
 try:
     # Create Manga
@@ -749,13 +749,13 @@ Follow Manga
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 
 try:
@@ -796,13 +796,13 @@ Add Manga in CustomList
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
 list_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | CustomList ID
 
@@ -845,15 +845,15 @@ Update Manga reading status
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
-body = mangadex_openapi.UpdateMangaStatus() # UpdateMangaStatus | Using a `null` value in `status` field will remove the Manga reading status. The size of the body is limited to 2KB. (optional)
+body = mangadex.UpdateMangaStatus() # UpdateMangaStatus | Using a `null` value in `status` field will remove the Manga reading status. The size of the body is limited to 2KB. (optional)
 
 try:
     # Update Manga reading status
@@ -894,15 +894,15 @@ Update Manga
 ```python
 from __future__ import print_function
 import time
-import mangadex_openapi
-from mangadex_openapi.rest import ApiException
+import mangadex
+from mangadex.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
-body = mangadex_openapi.MangaEdit() # MangaEdit | The size of the body is limited to 16KB. (optional)
+body = mangadex.MangaEdit() # MangaEdit | The size of the body is limited to 16KB. (optional)
 
 try:
     # Update Manga
