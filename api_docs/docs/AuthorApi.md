@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_author**
-> AuthorList get_author(limit=limit, offset=offset, ids=ids, name=name)
+> AuthorList get_author(limit=limit, offset=offset, ids=ids, name=name, order=order)
 
 Author list
 
@@ -76,10 +76,11 @@ limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | Author ids (limited to 100 per request) (optional)
 name = 'name_example' # str |  (optional)
+order = mangadex.Order4() # Order4 |  (optional)
 
 try:
     # Author list
-    api_response = api_instance.get_author(limit=limit, offset=offset, ids=ids, name=name)
+    api_response = api_instance.get_author(limit=limit, offset=offset, ids=ids, name=name, order=order)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AuthorApi->get_author: %s\n" % e)
@@ -93,6 +94,7 @@ Name | Type | Description  | Notes
  **offset** | **int**|  | [optional] 
  **ids** | [**list[str]**](str.md)| Author ids (limited to 100 per request) | [optional] 
  **name** | **str**|  | [optional] 
+ **order** | [**Order4**](.md)|  | [optional] 
 
 ### Return type
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | [**LocalizedString**](LocalizedString.md) |  | [optional] 
 **authors** | **list[str]** |  | [optional] 
 **artists** | **list[str]** |  | [optional] 
-**links** | **list[object]** |  | [optional] 
+**links** | **dict(str, str)** |  | [optional] 
 **original_language** | **str** |  | [optional] 
 **last_volume** | **str** |  | [optional] 
 **last_chapter** | **str** |  | [optional] 

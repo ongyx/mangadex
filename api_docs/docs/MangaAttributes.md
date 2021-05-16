@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **dict(str, str)** |  | [optional] 
-**alt_titles** | [**list[Object]**](Object.md) |  | [optional] 
-**description** | **dict(str, str)** |  | [optional] 
+**title** | [**LocalizedString**](LocalizedString.md) |  | [optional] 
+**alt_titles** | [**list[LocalizedString]**](LocalizedString.md) |  | [optional] 
+**description** | [**LocalizedString**](LocalizedString.md) |  | [optional] 
 **is_locked** | **bool** |  | [optional] 
-**links** | [**list[Object]**](Object.md) |  | [optional] 
+**links** | **dict(str, str)** |  | [optional] 
 **original_language** | **str** |  | [optional] 
 **last_volume** | **str** |  | [optional] 
 **last_chapter** | **str** |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **year** | **int** |  | [optional] 
 **content_rating** | **str** |  | [optional] 
-**tags** | [**list[Object]**](Object.md) |  | [optional] 
+**tags** | [**list[Tag]**](Tag.md) |  | [optional] 
 **version** | **int** |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **updated_at** | **str** |  | [optional] 

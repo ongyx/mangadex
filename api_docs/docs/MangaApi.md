@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_manga_id_follow**](MangaApi.md#delete_manga_id_follow) | **DELETE** /manga/{id}/follow | Unfollow Manga
 [**delete_manga_id_list_list_id**](MangaApi.md#delete_manga_id_list_list_id) | **DELETE** /manga/{id}/list/{listId} | Remove Manga in CustomList
 [**get_manga_chapter_readmarkers**](MangaApi.md#get_manga_chapter_readmarkers) | **GET** /manga/{id}/read | Manga read markers
+[**get_manga_chapter_readmarkers_0**](MangaApi.md#get_manga_chapter_readmarkers_0) | **GET** /manga/read | Manga read markers
 [**get_manga_id**](MangaApi.md#get_manga_id) | **GET** /manga/{id} | View Manga
 [**get_manga_id_feed**](MangaApi.md#get_manga_id_feed) | **GET** /manga/{id}/feed | Manga feed
 [**get_manga_id_status**](MangaApi.md#get_manga_id_status) | **GET** /manga/{id}/status | Get a Manga reading status
@@ -215,6 +216,55 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_manga_chapter_readmarkers_0**
+> InlineResponse200 get_manga_chapter_readmarkers_0(ids)
+
+Manga read markers
+
+A list of chapter ids that are marked as read for the given manga ids
+
+### Example
+```python
+from __future__ import print_function
+import time
+import mangadex
+from mangadex.rest import ApiException
+from pprint import pprint
+
+
+# create an instance of the API class
+api_instance = mangadex.MangaApi(mangadex.ApiClient(configuration))
+ids = ['ids_example'] # list[str] | Manga ids
+
+try:
+    # Manga read markers
+    api_response = api_instance.get_manga_chapter_readmarkers_0(ids)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling MangaApi->get_manga_chapter_readmarkers_0: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ids** | [**list[str]**](str.md)| Manga ids | 
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_manga_id**
 > MangaResponse get_manga_id(id)
 
@@ -285,7 +335,7 @@ locales = ['locales_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex.Order4() # Order4 |  (optional)
+order = mangadex.Order5() # Order5 |  (optional)
 
 try:
     # Manga feed
@@ -306,7 +356,7 @@ Name | Type | Description  | Notes
  **created_at_since** | **str**|  | [optional] 
  **updated_at_since** | **str**|  | [optional] 
  **publish_at_since** | **str**|  | [optional] 
- **order** | [**Order4**](.md)|  | [optional] 
+ **order** | [**Order5**](.md)|  | [optional] 
 
 ### Return type
 
