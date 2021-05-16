@@ -1,4 +1,4 @@
-# mangadex.FeedApi
+# mangadex_openapi.FeedApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -16,13 +16,13 @@ CustomList Manga feed
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex.FeedApi(mangadex.ApiClient(configuration))
+api_instance = mangadex_openapi.FeedApi(mangadex_openapi.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | 
 limit = 100 # int |  (optional) (default to 100)
 offset = 56 # int |  (optional)
@@ -30,7 +30,7 @@ locales = ['locales_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex.Order3() # Order3 |  (optional)
+order = mangadex_openapi.Order3() # Order3 |  (optional)
 
 try:
     # CustomList Manga feed
@@ -77,20 +77,20 @@ Get logged User followed Manga feed
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex.FeedApi(mangadex.ApiClient(configuration))
+api_instance = mangadex_openapi.FeedApi(mangadex_openapi.ApiClient(configuration))
 limit = 100 # int |  (optional) (default to 100)
 offset = 56 # int |  (optional)
 locales = ['locales_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex.Order2() # Order2 |  (optional)
+order = mangadex_openapi.Order2() # Order2 |  (optional)
 
 try:
     # Get logged User followed Manga feed

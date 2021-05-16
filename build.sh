@@ -7,7 +7,7 @@ API_SPEC_URL="https://api.mangadex.org/api.yaml"
 API_SPEC_DIR="spec"
 API_SPEC_LATEST="$API_SPEC_DIR/latest.yaml"
 
-API_NAME="mangadex"
+API_NAME="mangadex_openapi"
 API_DOCS="api_docs"
 API_VERSION="0.0.1"
 

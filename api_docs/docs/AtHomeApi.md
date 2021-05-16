@@ -1,4 +1,4 @@
-# mangadex.AtHomeApi
+# mangadex_openapi.AtHomeApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -15,12 +15,12 @@ Get MangaDex@Home server URL
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.AtHomeApi()
+api_instance = mangadex_openapi.AtHomeApi()
 chapter_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Chapter ID
 force_port443 = false # bool | Force selecting from MangaDex@Home servers that use the standard HTTPS port 443.  While the conventional port for HTTPS traffic is 443 and servers are encouraged to use it, it is not a hard requirement as it technically isn't anything special.  However, some misbehaving school/office network will at time block traffic to non-standard ports, and setting this flag to `true` will ensure selection of a server that uses these. (optional) (default to false)
 

@@ -1,4 +1,4 @@
-# mangadex.SearchApi
+# mangadex_openapi.SearchApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -18,17 +18,17 @@ Author list
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.SearchApi()
+api_instance = mangadex_openapi.SearchApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | Author ids (limited to 100 per request) (optional)
 name = 'name_example' # str |  (optional)
-order = mangadex.Order4() # Order4 |  (optional)
+order = mangadex_openapi.Order4() # Order4 |  (optional)
 
 try:
     # Author list
@@ -74,12 +74,12 @@ Chapter list. If you want the Chapters of a given Manga, please check the feed e
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.SearchApi()
+api_instance = mangadex_openapi.SearchApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | Chapter ids (limited to 100 per request) (optional)
@@ -93,7 +93,7 @@ translated_language = 'translated_language_example' # str |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex.Order1() # Order1 |  (optional)
+order = mangadex_openapi.Order1() # Order1 |  (optional)
 
 try:
     # Chapter list
@@ -146,12 +146,12 @@ Scanlation Group list
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.SearchApi()
+api_instance = mangadex_openapi.SearchApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | ScanlationGroup ids (limited to 100 per request) (optional)
@@ -200,12 +200,12 @@ Search a list of Manga.
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.SearchApi()
+api_instance = mangadex_openapi.SearchApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 title = 'title_example' # str |  (optional)
@@ -223,7 +223,7 @@ ids = ['ids_example'] # list[str] | Manga ids (limited to 100 per request) (opti
 content_rating = ['content_rating_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
-order = mangadex.Order() # Order |  (optional)
+order = mangadex_openapi.Order() # Order |  (optional)
 
 try:
     # Manga list

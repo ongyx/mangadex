@@ -1,4 +1,4 @@
-# mangadex.CaptchaApi
+# mangadex_openapi.CaptchaApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -17,14 +17,14 @@ Captchas can be solved explicitly through this endpoint, another way is to add a
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex.CaptchaApi(mangadex.ApiClient(configuration))
-body = mangadex.Body() # Body |  (optional)
+api_instance = mangadex_openapi.CaptchaApi(mangadex_openapi.ApiClient(configuration))
+body = mangadex_openapi.Body() # Body |  (optional)
 
 try:
     # Solve Captcha

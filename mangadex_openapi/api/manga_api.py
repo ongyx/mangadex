@@ -17,7 +17,7 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from mangadex.api_client import ApiClient
+from mangadex_openapi.api_client import ApiClient
 
 
 class MangaApi(object):

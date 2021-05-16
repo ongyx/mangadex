@@ -1,4 +1,4 @@
-# mangadex.LegacyApi
+# mangadex_openapi.LegacyApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -15,13 +15,13 @@ Legacy ID mapping
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.LegacyApi()
-body = mangadex.MappingIdBody() # MappingIdBody | The size of the body is limited to 10KB. (optional)
+api_instance = mangadex_openapi.LegacyApi()
+body = mangadex_openapi.MappingIdBody() # MappingIdBody | The size of the body is limited to 10KB. (optional)
 
 try:
     # Legacy ID mapping

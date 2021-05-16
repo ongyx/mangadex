@@ -3,10 +3,10 @@ requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
 
 [tool.flit.metadata]
-module = "mangadex"
+module = "mangadex_openapi"
 author = "Ong Yong Xin"
 author-email = "ongyongxin2020+github@gmail.com"
-home-page = "https://github.com/ongyx/mangadex"
+home-page = "https://github.com/ongyx/mangadex_openapi"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

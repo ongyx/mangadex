@@ -1,4 +1,4 @@
-# mangadex.AuthorApi
+# mangadex_openapi.AuthorApi
 
 All URIs are relative to *https://api.mangadex.org*
 
@@ -19,13 +19,13 @@ Delete Author
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex.AuthorApi(mangadex.ApiClient(configuration))
+api_instance = mangadex_openapi.AuthorApi(mangadex_openapi.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Author ID
 
 try:
@@ -66,17 +66,17 @@ Author list
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.AuthorApi()
+api_instance = mangadex_openapi.AuthorApi()
 limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | Author ids (limited to 100 per request) (optional)
 name = 'name_example' # str |  (optional)
-order = mangadex.Order4() # Order4 |  (optional)
+order = mangadex_openapi.Order4() # Order4 |  (optional)
 
 try:
     # Author list
@@ -120,12 +120,12 @@ Get Author
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = mangadex.AuthorApi()
+api_instance = mangadex_openapi.AuthorApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Author ID
 
 try:
@@ -166,14 +166,14 @@ Create Author
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex.AuthorApi(mangadex.ApiClient(configuration))
-body = mangadex.AuthorCreate() # AuthorCreate | The size of the body is limited to 2KB. (optional)
+api_instance = mangadex_openapi.AuthorApi(mangadex_openapi.ApiClient(configuration))
+body = mangadex_openapi.AuthorCreate() # AuthorCreate | The size of the body is limited to 2KB. (optional)
 
 try:
     # Create Author
@@ -213,15 +213,15 @@ Update Author
 ```python
 from __future__ import print_function
 import time
-import mangadex
-from mangadex.rest import ApiException
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
 
 # create an instance of the API class
-api_instance = mangadex.AuthorApi(mangadex.ApiClient(configuration))
+api_instance = mangadex_openapi.AuthorApi(mangadex_openapi.ApiClient(configuration))
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Author ID
-body = mangadex.AuthorEdit() # AuthorEdit | The size of the body is limited to 2KB. (optional)
+body = mangadex_openapi.AuthorEdit() # AuthorEdit | The size of the body is limited to 2KB. (optional)
 
 try:
     # Update Author
