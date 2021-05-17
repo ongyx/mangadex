@@ -140,11 +140,4 @@ cat << EOF >> $API_NAME/__init__.py
 __version__ = "$API_VERSION"
 EOF
 
-# Add 'Object' as a vaild native type (should be lowercase 'object')
-# otherwise an AttributeError is raised
-cat << "EOF" >> $API_NAME/api_client.py
-
-ApiClient.NATIVE_TYPES_MAPPING["Object"] = object
-EOF
-
 echo "done"
