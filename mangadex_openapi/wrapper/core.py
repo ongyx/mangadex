@@ -6,6 +6,38 @@ from typing import Optional
 import mangadex_openapi as mangadex
 
 
+class APIDelegate:
+    def __init__(self, client: mangadex.ApiClient):
+        self._client = client
+        self._apis = {}
+
+    def __getattr__(self, attr):
+        # i.e self.manga will initalize MangaApi and save it in self._apis
+        if attr not in self._apis:
+            self._apis[attr] = getattr(mangadex, f"{attr.capitalize()}Api")(
+                self._client
+            )
+
+        return self._apis[attr]
+
+
+class Client:
+    def __init__(self):
+        self.client = mangadex.ApiClient()
+        self.api = APIDelegate(self.client)
+
+    def login(self, username: str, password: str):
+        self.api.auth.post_auth_login(
+            mangadex.Login(username=username, password=password)
+        )
+
+    def search_manga(self, **criteria):
+        return self.api.search.get_search_manga(**criteria)
+
+    def search_chapters(self, **criteria):
+        return self.api.search.get_chapter(**criteria)
+
+
 class Base:
     def __init__(
         self, client: Optional[mangadex.ApiClient] = None, id: Optional[str] = None

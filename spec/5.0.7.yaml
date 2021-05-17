@@ -13,7 +13,7 @@ tags:
   - name: Infrastructure
 info:
   title: MangaDex API
-  version: 5.0.8
+  version: 5.0.7
   contact:
     name: MangaDex staff team
     email: mangadexstaff@gmail.com
@@ -323,6 +323,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MangaList'
+        '204':
+          description: No Content
         '400':
           description: Bad Request
           content:
@@ -504,49 +506,6 @@ paths:
       description: Create a new Manga.
       tags:
         - Manga
-  '/manga/{id}/aggregate':
-    parameters:
-      - schema:
-          type: string
-          format: uuid
-        name: id
-        in: path
-        required: true
-        description: Manga ID
-    get:
-      summary: Get Manga volumes & chapters
-      security: []
-      tags:
-        - Manga
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: string
-                    default: ok
-                  volumes:
-                    type: object
-                    additionalProperties:
-                      type: object
-                      properties:
-                        volume:
-                          type: string
-                        count:
-                          type: integer
-                        chapters:
-                          type: object
-                          additionalProperties:
-                            type: object
-                            properties:
-                              chapter:
-                                type: string
-                              count:
-                                type: integer
   '/manga/{id}':
     parameters:
       - schema:
@@ -809,6 +768,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScanlationGroupList'
+        '204':
+          description: No Content
         '400':
           description: Bad Request
           content:
@@ -1288,6 +1249,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChapterList'
+        '204':
+          description: No Content
         '400':
           description: Bad Request
           content:
@@ -1544,6 +1507,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChapterList'
+        '204':
+          description: No content
         '400':
           description: Bad Request
           content:
@@ -1626,6 +1591,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChapterList'
+        '204':
+          description: No content
         '400':
           description: Bad Request
           content:
@@ -1755,6 +1722,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthorList'
+        '204':
+          description: No Content
         '400':
           description: Bad Request
           content:
@@ -1970,6 +1939,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChapterList'
+        '204':
+          description: No content
         '400':
           description: Bad Request
           content:
@@ -2349,6 +2320,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScanlationGroupList'
+        '204':
+          description: No content
       operationId: get-user-follows-group
       parameters:
         - schema:
@@ -2375,6 +2348,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserList'
+        '204':
+          description: No content
       operationId: get-user-follows-user
       parameters:
         - schema:
@@ -2402,6 +2377,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MangaList'
+        '204':
+          description: No content
       operationId: get-user-follows-manga
       parameters:
         - schema:

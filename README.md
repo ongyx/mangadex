@@ -37,6 +37,12 @@ $ ./build.sh
 
 This will download the codegen.jar artifact if it does not exist, update the spec if there are any changes, and (re)generate the API code.
 
+If you only want to update the spec (inspect differences) without regenerating:
+
+```bash
+$ ./build.sh nogen
+```
+
 ## Todo
 
 - [ ] Create a wrapper around the API to make it easier to use.

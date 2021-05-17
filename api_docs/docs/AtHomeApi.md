@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**get_at_home_server_chapter_id**](AtHomeApi.md#get_at_home_server_chapter_id) | **GET** /at-home/server/{chapterId} | Get MangaDex@Home server URL
 
 # **get_at_home_server_chapter_id**
-> InlineResponse2002 get_at_home_server_chapter_id(chapter_id, force_port443=force_port443)
+> InlineResponse2003 get_at_home_server_chapter_id(chapter_id, force_port443=force_port443)
 
 Get MangaDex@Home server URL
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 

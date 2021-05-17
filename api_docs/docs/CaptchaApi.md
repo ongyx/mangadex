@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**post_captcha_solve**](CaptchaApi.md#post_captcha_solve) | **POST** /captcha/solve | Solve Captcha
 
 # **post_captcha_solve**
-> InlineResponse2001 post_captcha_solve(body=body)
+> InlineResponse2002 post_captcha_solve(body=body)
 
 Solve Captcha
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 

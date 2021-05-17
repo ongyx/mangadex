@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**get_search_manga**](MangaApi.md#get_search_manga) | **GET** /manga | Manga list
 [**get_user_follows_manga**](MangaApi.md#get_user_follows_manga) | **GET** /user/follows/manga | Get logged User followed Manga list
 [**get_user_follows_manga_feed**](MangaApi.md#get_user_follows_manga_feed) | **GET** /user/follows/manga/feed | Get logged User followed Manga feed
+[**manga_id_aggregate_get**](MangaApi.md#manga_id_aggregate_get) | **GET** /manga/{id}/aggregate | Get Manga volumes &amp; chapters
 [**post_manga**](MangaApi.md#post_manga) | **POST** /manga | Create Manga
 [**post_manga_id_follow**](MangaApi.md#post_manga_id_follow) | **POST** /manga/{id}/follow | Follow Manga
 [**post_manga_id_list_list_id**](MangaApi.md#post_manga_id_list_list_id) | **POST** /manga/{id}/list/{listId} | Add Manga in CustomList
@@ -168,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_manga_chapter_readmarkers**
-> InlineResponse200 get_manga_chapter_readmarkers(id)
+> InlineResponse2001 get_manga_chapter_readmarkers(id)
 
 Manga read markers
 
@@ -203,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -217,7 +218,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_manga_chapter_readmarkers_0**
-> InlineResponse200 get_manga_chapter_readmarkers_0(ids)
+> InlineResponse2001 get_manga_chapter_readmarkers_0(ids)
 
 Manga read markers
 
@@ -252,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -374,7 +375,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_manga_id_status**
-> InlineResponse2004 get_manga_id_status(id)
+> InlineResponse2005 get_manga_id_status(id)
 
 Get a Manga reading status
 
@@ -407,7 +408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -463,7 +464,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_manga_status**
-> InlineResponse2003 get_manga_status(status=status)
+> InlineResponse2004 get_manga_status(status=status)
 
 Get all Manga reading status for logged User
 
@@ -496,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -733,6 +734,52 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **manga_id_aggregate_get**
+> InlineResponse200 manga_id_aggregate_get(id)
+
+Get Manga volumes & chapters
+
+### Example
+```python
+from __future__ import print_function
+import time
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = mangadex_openapi.MangaApi()
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
+
+try:
+    # Get Manga volumes & chapters
+    api_response = api_instance.manga_id_aggregate_get(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling MangaApi->manga_id_aggregate_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | [**str**](.md)| Manga ID | 
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

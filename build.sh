@@ -9,12 +9,14 @@ API_SPEC_LATEST="$API_SPEC_DIR/latest.yaml"
 
 API_NAME="mangadex_openapi"
 API_DOCS="api_docs"
-API_VERSION="0.0.2"
+API_VERSION="0.0.3"
 
 BUILD_LOG="build.log"
 
 # Any files/folders in this array will be moved out of the old build and then moved into the new build.
 declare -a API_KEEP=("wrapper")
+
+argv=("$@")
 
 check_commands () {
   for cmd in curl java; do
@@ -80,6 +82,10 @@ if [ ! -d $API_SPEC_DIR ]; then
   spec_create
 else
   spec_update
+fi
+
+if [ "${argv[0]}" == "nogen" ]; then
+  exit 1
 fi
 
 if [ ! -e $ARTIFACT ]; then

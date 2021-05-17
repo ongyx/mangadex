@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**put_chapter_id**](ChapterApi.md#put_chapter_id) | **PUT** /chapter/{id} | Update Chapter
 
 # **chapter_id_read**
-> InlineResponse2001 chapter_id_read(id)
+> InlineResponse2002 chapter_id_read(id)
 
 Mark Chapter read
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **chapter_id_unread**
-> InlineResponse2001 chapter_id_unread(id)
+> InlineResponse2002 chapter_id_unread(id)
 
 Mark Chapter unread
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
