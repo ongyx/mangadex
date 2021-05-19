@@ -4,9 +4,23 @@ Python API to mangadex.org, generated using [swagger-codegen](https://github.com
 
 ## Usage
 
-You can directly use the API like this:
+A higher-level API is provided for common tasks (docs [here](API.md)):
 
+```python
+from mangadex_openapi.wrapper import api
+
+class MangaClient(api.Client, api.MangaMixin, api.ChapterMixin):
+    pass
+
+client = MangaClient()
+
+chapters = client.feed_chapters("a96676e5-8ae2-425e-b549-7f15dd34a6d8")
+pages = client.pages(chapters.results[0])
 ```
+
+You can also directly use the API like this (docs [here](api_docs/README.md)):
+
+```python
 import mangadex_openapi as mangadex
 
 client = mangadex.ApiClient()
@@ -15,8 +29,6 @@ manga_api = mangadex.MangaApi(client)
 
 random_manga = manga_api.get_manga_random()
 ```
-
-For more info on using the API, read the auto-generated docs [here](api_docs/README.md).
 
 The version of this API will remain at 0.y.z until the Mangadex API itself is out of beta (and considered stable).
 

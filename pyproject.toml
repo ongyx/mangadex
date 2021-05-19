@@ -26,6 +26,9 @@ requires-python = ">=3.6"
 test = [
     "pytest>=6.2.2"
 ]
+docs = [
+    "pydoc-markdown>=3.10.1"
+]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
