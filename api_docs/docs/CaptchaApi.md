@@ -24,7 +24,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = mangadex_openapi.CaptchaApi(mangadex_openapi.ApiClient(configuration))
-body = mangadex_openapi.Body() # Body |  (optional)
+body = mangadex_openapi.Body1() # Body1 |  (optional)
 
 try:
     # Solve Captcha
@@ -38,7 +38,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body**](Body.md)|  | [optional] 
+ **body** | [**Body1**](Body1.md)|  | [optional] 
 
 ### Return type
 

@@ -38,6 +38,7 @@ Make sure you have installed the following:
 
 - `curl`
 - `java` (at least Java 8)
+- `black` (installed if you ran `flit install`)
 
 The build script will tell you if you haven't installed these yet.
 
@@ -65,7 +66,14 @@ Legend:
 - ❗: minor change, may break existing code
 - 💥: major change, will break existing code
 
-### 5.0.8 (Latest)
+### 5.0.12 (Latest)
+
+- ❗ Added endpoint `/cover/{id}`.
+     Given a cover UUID, it returns the filename of the cover.
+- ❗ Added endpoint `/cover`.
+     This can be used to search for manga covers by manga id.
+
+### 5.0.8
 
 - ❗ Removed status code 204 from endpoint `/manga`.
 - ❗ Added endpoint `/manga/{id}/aggregate`:

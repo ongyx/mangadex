@@ -76,7 +76,7 @@ limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | Author ids (limited to 100 per request) (optional)
 name = 'name_example' # str |  (optional)
-order = mangadex_openapi.Order4() # Order4 |  (optional)
+order = mangadex_openapi.Order5() # Order5 |  (optional)
 
 try:
     # Author list
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
  **offset** | **int**|  | [optional] 
  **ids** | [**list[str]**](str.md)| Author ids (limited to 100 per request) | [optional] 
  **name** | **str**|  | [optional] 
- **order** | [**Order4**](.md)|  | [optional] 
+ **order** | [**Order5**](.md)|  | [optional] 
 
 ### Return type
 

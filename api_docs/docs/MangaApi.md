@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_manga_id_follow**](MangaApi.md#delete_manga_id_follow) | **DELETE** /manga/{id}/follow | Unfollow Manga
 [**delete_manga_id_list_list_id**](MangaApi.md#delete_manga_id_list_list_id) | **DELETE** /manga/{id}/list/{listId} | Remove Manga in CustomList
 [**get_manga_chapter_readmarkers**](MangaApi.md#get_manga_chapter_readmarkers) | **GET** /manga/{id}/read | Manga read markers
-[**get_manga_chapter_readmarkers_0**](MangaApi.md#get_manga_chapter_readmarkers_0) | **GET** /manga/read | Manga read markers
+[**get_manga_chapter_readmarkers2**](MangaApi.md#get_manga_chapter_readmarkers2) | **GET** /manga/read | Manga read markers
 [**get_manga_id**](MangaApi.md#get_manga_id) | **GET** /manga/{id} | View Manga
 [**get_manga_id_feed**](MangaApi.md#get_manga_id_feed) | **GET** /manga/{id}/feed | Manga feed
 [**get_manga_id_status**](MangaApi.md#get_manga_id_status) | **GET** /manga/{id}/status | Get a Manga reading status
@@ -217,8 +217,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_manga_chapter_readmarkers_0**
-> InlineResponse2001 get_manga_chapter_readmarkers_0(ids)
+# **get_manga_chapter_readmarkers2**
+> InlineResponse2001 get_manga_chapter_readmarkers2(ids)
 
 Manga read markers
 
@@ -239,10 +239,10 @@ ids = ['ids_example'] # list[str] | Manga ids
 
 try:
     # Manga read markers
-    api_response = api_instance.get_manga_chapter_readmarkers_0(ids)
+    api_response = api_instance.get_manga_chapter_readmarkers2(ids)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling MangaApi->get_manga_chapter_readmarkers_0: %s\n" % e)
+    print("Exception when calling MangaApi->get_manga_chapter_readmarkers2: %s\n" % e)
 ```
 
 ### Parameters
@@ -315,7 +315,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_manga_id_feed**
-> ChapterList get_manga_id_feed(id, limit=limit, offset=offset, locales=locales, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
+> ChapterList get_manga_id_feed(id, limit=limit, offset=offset, translated_language=translated_language, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
 
 Manga feed
 
@@ -332,15 +332,15 @@ api_instance = mangadex_openapi.MangaApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
 limit = 100 # int |  (optional) (default to 100)
 offset = 56 # int |  (optional)
-locales = ['locales_example'] # list[str] |  (optional)
+translated_language = ['translated_language_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
-order = mangadex_openapi.Order5() # Order5 |  (optional)
+order = mangadex_openapi.Order6() # Order6 |  (optional)
 
 try:
     # Manga feed
-    api_response = api_instance.get_manga_id_feed(id, limit=limit, offset=offset, locales=locales, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
+    api_response = api_instance.get_manga_id_feed(id, limit=limit, offset=offset, translated_language=translated_language, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MangaApi->get_manga_id_feed: %s\n" % e)
@@ -353,11 +353,11 @@ Name | Type | Description  | Notes
  **id** | [**str**](.md)| Manga ID | 
  **limit** | **int**|  | [optional] [default to 100]
  **offset** | **int**|  | [optional] 
- **locales** | [**list[str]**](str.md)|  | [optional] 
+ **translated_language** | [**list[str]**](str.md)|  | [optional] 
  **created_at_since** | **str**|  | [optional] 
  **updated_at_since** | **str**|  | [optional] 
  **publish_at_since** | **str**|  | [optional] 
- **order** | [**Order5**](.md)|  | [optional] 
+ **order** | [**Order6**](.md)|  | [optional] 
 
 ### Return type
 
@@ -684,7 +684,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_follows_manga_feed**
-> ChapterList get_user_follows_manga_feed(limit=limit, offset=offset, locales=locales, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
+> ChapterList get_user_follows_manga_feed(limit=limit, offset=offset, translated_language=translated_language, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
 
 Get logged User followed Manga feed
 
@@ -701,7 +701,7 @@ from pprint import pprint
 api_instance = mangadex_openapi.MangaApi(mangadex_openapi.ApiClient(configuration))
 limit = 100 # int |  (optional) (default to 100)
 offset = 56 # int |  (optional)
-locales = ['locales_example'] # list[str] |  (optional)
+translated_language = ['translated_language_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
@@ -709,7 +709,7 @@ order = mangadex_openapi.Order2() # Order2 |  (optional)
 
 try:
     # Get logged User followed Manga feed
-    api_response = api_instance.get_user_follows_manga_feed(limit=limit, offset=offset, locales=locales, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
+    api_response = api_instance.get_user_follows_manga_feed(limit=limit, offset=offset, translated_language=translated_language, created_at_since=created_at_since, updated_at_since=updated_at_since, publish_at_since=publish_at_since, order=order)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MangaApi->get_user_follows_manga_feed: %s\n" % e)
@@ -721,7 +721,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**|  | [optional] [default to 100]
  **offset** | **int**|  | [optional] 
- **locales** | [**list[str]**](str.md)|  | [optional] 
+ **translated_language** | [**list[str]**](str.md)|  | [optional] 
  **created_at_since** | **str**|  | [optional] 
  **updated_at_since** | **str**|  | [optional] 
  **publish_at_since** | **str**|  | [optional] 
@@ -743,7 +743,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **manga_id_aggregate_get**
-> InlineResponse200 manga_id_aggregate_get(id)
+> InlineResponse200 manga_id_aggregate_get(id, translated_language=translated_language)
 
 Get Manga volumes & chapters
 
@@ -758,10 +758,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = mangadex_openapi.MangaApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | Manga ID
+translated_language = ['translated_language_example'] # list[str] |  (optional)
 
 try:
     # Get Manga volumes & chapters
-    api_response = api_instance.manga_id_aggregate_get(id)
+    api_response = api_instance.manga_id_aggregate_get(id, translated_language=translated_language)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MangaApi->manga_id_aggregate_get: %s\n" % e)
@@ -772,6 +773,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**str**](.md)| Manga ID | 
+ **translated_language** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 

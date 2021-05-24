@@ -27,7 +27,8 @@ test = [
     "pytest>=6.2.2"
 ]
 docs = [
-    "pydoc-markdown>=3.10.1"
+    "pydoc-markdown>=3.10.1",
+    "black>=21.5b1"
 ]
 
 [tool.pytest.ini_options]

@@ -22,6 +22,8 @@
     * [chapter](#mangadex_openapi.wrapper.api.ChapterMixin.chapter)
     * [mark\_read](#mangadex_openapi.wrapper.api.ChapterMixin.mark_read)
     * [mark\_unread](#mangadex_openapi.wrapper.api.ChapterMixin.mark_unread)
+  * [CoverMixin](#mangadex_openapi.wrapper.api.CoverMixin)
+    * [cover](#mangadex_openapi.wrapper.api.CoverMixin.cover)
   * [MangaMixin](#mangadex_openapi.wrapper.api.MangaMixin)
     * [manga\_](#mangadex_openapi.wrapper.api.MangaMixin.manga_)
     * [aggregate](#mangadex_openapi.wrapper.api.MangaMixin.aggregate)
@@ -29,6 +31,7 @@
   * [SearchMixin](#mangadex_openapi.wrapper.api.SearchMixin)
     * [search\_authors](#mangadex_openapi.wrapper.api.SearchMixin.search_authors)
     * [search\_chapters](#mangadex_openapi.wrapper.api.SearchMixin.search_chapters)
+    * [search\_covers](#mangadex_openapi.wrapper.api.SearchMixin.search_covers)
     * [search\_groups](#mangadex_openapi.wrapper.api.SearchMixin.search_groups)
     * [search\_manga](#mangadex_openapi.wrapper.api.SearchMixin.search_manga)
 
@@ -95,7 +98,7 @@ class AccountMixin()
 Create a Mangadex account.
 
 Note that you have to activate the account before you can use it.
-Check the email's inbox for an actvation code, and then run client.activate_account("<activation code>").
+Check the email's inbox for an actvation code, and then run client.activate_account("activation code").
 
 **Arguments**:
 
@@ -139,7 +142,7 @@ Resend an activation code to a new Mangadex account.
 Recover a Mangadex account
 (i.e if you forgot your password).
 
-A recovery code is sent to the email of the account, so call client.recover_complete("<code>", "<new password>").
+A recovery code is sent to the email of the account, so call client.recover_complete("code", "new password").
 
 **Arguments**:
 
@@ -280,6 +283,22 @@ Mark a chapter by id as read for the current user.
 
 Mark a chapter by id as unread for the current user.
 
+<a name="mangadex_openapi.wrapper.api.CoverMixin"></a>
+## CoverMixin Objects
+
+```python
+class CoverMixin()
+```
+
+<a name="mangadex_openapi.wrapper.api.CoverMixin.cover"></a>
+#### cover
+
+```python
+ | cover(id: str) -> mangadex.CoverResponse
+```
+
+Get cover by id.
+
 <a name="mangadex_openapi.wrapper.api.MangaMixin"></a>
 ## MangaMixin Objects
 
@@ -338,6 +357,15 @@ Search authors by criteria.
 ```
 
 Search chapters by criteria.
+
+<a name="mangadex_openapi.wrapper.api.SearchMixin.search_covers"></a>
+#### search\_covers
+
+```python
+ | search_covers(**criteria) -> mangadex.CoverList
+```
+
+Search covers by criteria.
 
 <a name="mangadex_openapi.wrapper.api.SearchMixin.search_groups"></a>
 #### search\_groups

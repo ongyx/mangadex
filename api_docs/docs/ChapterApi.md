@@ -182,7 +182,7 @@ uploader = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str |  (optional)
 manga = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str |  (optional)
 volume = 'volume_example' # str |  (optional)
 chapter = 'chapter_example' # str |  (optional)
-translated_language = 'translated_language_example' # str |  (optional)
+translated_language = ['translated_language_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
  **manga** | [**str**](.md)|  | [optional] 
  **volume** | **str**|  | [optional] 
  **chapter** | **str**|  | [optional] 
- **translated_language** | **str**|  | [optional] 
+ **translated_language** | [**list[str]**](str.md)|  | [optional] 
  **created_at_since** | **str**|  | [optional] 
  **updated_at_since** | **str**|  | [optional] 
  **publish_at_since** | **str**|  | [optional] 

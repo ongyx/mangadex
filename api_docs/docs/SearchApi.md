@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_author**](SearchApi.md#get_author) | **GET** /author | Author list
 [**get_chapter**](SearchApi.md#get_chapter) | **GET** /chapter | Chapter list
+[**get_cover**](SearchApi.md#get_cover) | **GET** /cover | CoverArt list
 [**get_search_group**](SearchApi.md#get_search_group) | **GET** /group | Scanlation Group list
 [**get_search_manga**](SearchApi.md#get_search_manga) | **GET** /manga | Manga list
 
@@ -28,7 +29,7 @@ limit = 10 # int |  (optional) (default to 10)
 offset = 56 # int |  (optional)
 ids = ['ids_example'] # list[str] | Author ids (limited to 100 per request) (optional)
 name = 'name_example' # str |  (optional)
-order = mangadex_openapi.Order4() # Order4 |  (optional)
+order = mangadex_openapi.Order5() # Order5 |  (optional)
 
 try:
     # Author list
@@ -46,7 +47,7 @@ Name | Type | Description  | Notes
  **offset** | **int**|  | [optional] 
  **ids** | [**list[str]**](str.md)| Author ids (limited to 100 per request) | [optional] 
  **name** | **str**|  | [optional] 
- **order** | [**Order4**](.md)|  | [optional] 
+ **order** | [**Order5**](.md)|  | [optional] 
 
 ### Return type
 
@@ -89,7 +90,7 @@ uploader = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str |  (optional)
 manga = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str |  (optional)
 volume = 'volume_example' # str |  (optional)
 chapter = 'chapter_example' # str |  (optional)
-translated_language = 'translated_language_example' # str |  (optional)
+translated_language = ['translated_language_example'] # list[str] |  (optional)
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 publish_at_since = 'publish_at_since_example' # str |  (optional)
@@ -116,7 +117,7 @@ Name | Type | Description  | Notes
  **manga** | [**str**](.md)|  | [optional] 
  **volume** | **str**|  | [optional] 
  **chapter** | **str**|  | [optional] 
- **translated_language** | **str**|  | [optional] 
+ **translated_language** | [**list[str]**](str.md)|  | [optional] 
  **created_at_since** | **str**|  | [optional] 
  **updated_at_since** | **str**|  | [optional] 
  **publish_at_since** | **str**|  | [optional] 
@@ -125,6 +126,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ChapterList**](ChapterList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_cover**
+> CoverList get_cover(limit=limit, offset=offset, manga=manga, ids=ids, uploaders=uploaders, order=order)
+
+CoverArt list
+
+### Example
+```python
+from __future__ import print_function
+import time
+import mangadex_openapi
+from mangadex_openapi.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = mangadex_openapi.SearchApi()
+limit = 10 # int |  (optional) (default to 10)
+offset = 56 # int |  (optional)
+manga = ['manga_example'] # list[str] | Manga ids (limited to 100 per request) (optional)
+ids = ['ids_example'] # list[str] | Covers ids (limited to 100 per request) (optional)
+uploaders = ['uploaders_example'] # list[str] | User ids (limited to 100 per request) (optional)
+order = mangadex_openapi.Order4() # Order4 |  (optional)
+
+try:
+    # CoverArt list
+    api_response = api_instance.get_cover(limit=limit, offset=offset, manga=manga, ids=ids, uploaders=uploaders, order=order)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SearchApi->get_cover: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**|  | [optional] [default to 10]
+ **offset** | **int**|  | [optional] 
+ **manga** | [**list[str]**](str.md)| Manga ids (limited to 100 per request) | [optional] 
+ **ids** | [**list[str]**](str.md)| Covers ids (limited to 100 per request) | [optional] 
+ **uploaders** | [**list[str]**](str.md)| User ids (limited to 100 per request) | [optional] 
+ **order** | [**Order4**](.md)|  | [optional] 
+
+### Return type
+
+[**CoverList**](CoverList.md)
 
 ### Authorization
 

@@ -9,7 +9,7 @@ API_SPEC_LATEST="$API_SPEC_DIR/latest.yaml"
 
 API_NAME="mangadex_openapi"
 API_DOCS="api_docs"
-API_VERSION="0.1.0"
+API_VERSION="0.2.0"
 
 BUILD_LOG="build.log"
 
@@ -19,7 +19,7 @@ declare -a API_KEEP=("wrapper")
 argv=("$@")
 
 check_commands () {
-  for cmd in curl java; do
+  for cmd in curl java black; do
     if ! hash $cmd 2>/dev/null; then
       echo "command $cmd required, go install it first."
       exit 1
@@ -127,7 +127,7 @@ mv $TMP/$API_NAME .
 
 restore
 
-echo "patching API"
+echo "patching API (this might take a while)"
 
 ###########
 # PATCHES #
@@ -139,5 +139,11 @@ cat << EOF >> $API_NAME/__init__.py
 
 __version__ = "$API_VERSION"
 EOF
+
+# Serialised arrays no longer work when passed to the API; they need to have an '[]' at the end of the array name.
+sed -i 's/(k, value)/(k + "[]", value)/g' $API_NAME/api_client.py
+
+# format all API files
+black $API_NAME/**
 
 echo "done"

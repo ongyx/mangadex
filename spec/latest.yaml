@@ -1,6 +1,7 @@
 openapi: 3.0.3
 tags:
   - name: Manga
+  - name: Cover
   - name: Author
   - name: Search
   - name: Auth
@@ -13,7 +14,7 @@ tags:
   - name: Infrastructure
 info:
   title: MangaDex API
-  version: 5.0.8
+  version: 5.0.12
   contact:
     name: MangaDex staff team
     email: mangadexstaff@gmail.com
@@ -58,6 +59,9 @@ info:
     | `POST   /manga`                    | 10                          | 60                     |
     | `PUT    /manga/{id}`               | 10                          | 60                     |
     | `DELETE /manga/{id}`               | 10                          | 10                     |
+    | `POST   /cover`                    | 10                          | 1                      |
+    | `PUT    /cover/{id}`               | 10                          | 1                      |
+    | `DELETE /cover/{id}`               | 10                          | 10                     |
     | `POST   /group`                    | 10                          | 60                     |
     | `PUT    /group/{id}`               | 10                          | 1                      |
     | `DELETE /group/{id}`               | 10                          | 10                     |
@@ -268,12 +272,16 @@ info:
     |------------------|--------------------------------|
     | manga            | Manga resource                 |
     | chapter          | Chapter resource               |
+    | cover_art        | A Cover Art for a manga `*`    |
     | author           | Author resource                |
     | artist           | Author resource (drawers only) |
     | scanlation_group | ScanlationGroup resource       |
     | tag              | Tag resource                   |
     | user             | User resource                  |
     | custom_list      | CustomList resource            |
+
+    `*` Note, that on manga resources you get only one cover_art resource relation marking the primary cover if there are more than one.
+    By default this will be the latest volume's cover art. If you like to see all the covers for a given manga, use the cover search endpoint for your mangaId and select the one you wish to display.
 
     ## Manga links data
 
@@ -518,6 +526,14 @@ paths:
       security: []
       tags:
         - Manga
+      parameters:
+        - schema:
+            type: array
+            items:
+              type: string
+              pattern: '^[a-zA-Z\-]{2,5}$'
+          in: query
+          name: translatedLanguage
       responses:
         '200':
           description: OK
@@ -1351,8 +1367,10 @@ paths:
           in: query
           name: chapter
         - schema:
-            type: string
-            pattern: '^[a-zA-Z\-]{2,5}$'
+            type: array
+            items:
+              type: string
+              pattern: '^[a-zA-Z\-]{2,5}$'
           in: query
           name: translatedLanguage
         - schema:
@@ -1572,7 +1590,7 @@ paths:
               type: string
               pattern: '^[a-zA-Z\-]{2,5}$'
           in: query
-          name: locales
+          name: translatedLanguage
         - schema:
             type: string
             description: "DateTime string with following format: YYYY-MM-DDTHH:MM:SS"
@@ -1664,7 +1682,7 @@ paths:
               type: string
               pattern: '^[a-zA-Z\-]{2,5}$'
           in: query
-          name: locales
+          name: translatedLanguage
         - schema:
             type: string
             description: "DateTime string with following format: YYYY-MM-DDTHH:MM:SS"
@@ -1742,6 +1760,220 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
       tags:
         - Manga
+  /cover:
+    get:
+      summary: CoverArt list
+      tags:
+        - Cover
+        - Search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoverList'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      operationId: get-cover
+      parameters:
+        - schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+          in: query
+          name: limit
+        - schema:
+            type: integer
+            minimum: 0
+          in: query
+          name: offset
+        - schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+          in: query
+          name: manga
+          description: Manga ids (limited to 100 per request)
+        - schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+          in: query
+          name: ids
+          description: Covers ids (limited to 100 per request)
+        - schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+          in: query
+          name: uploaders
+          description: User ids (limited to 100 per request)
+        - schema:
+            type: object
+            properties:
+              createdAt:
+                type: string
+                enum:
+                  - asc
+                  - desc
+              updatedAt:
+                type: string
+                enum:
+                  - asc
+                  - desc
+              volume:
+                type: string
+                enum:
+                  - asc
+                  - desc
+          in: query
+          name: order
+      security: []
+  /cover/{mangaId}:
+    post:
+      summary: Upload Cover
+      tags:
+        - Cover
+        - Upload
+      operationId: upload-cover
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          name: mangaId
+          in: path
+          required: true
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoverResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /cover/{coverId}:
+    parameters:
+      - schema:
+          type: string
+          format: uuid
+        name: coverId
+        in: path
+        required: true
+    get:
+      summary: Get Cover
+      tags:
+        - Cover
+      operationId: get-cover
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoverResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      summary: Edit Cover
+      tags:
+        - Cover
+      operationId: edit-cover
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoverEdit'
+        description: The size of the body is limited to 2KB.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoverResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security: []
+    delete:
+      summary: Delete Cover
+      tags:
+        - Cover
+      operationId: delete-cover
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security: []
   /author:
     get:
       summary: Author list
@@ -1996,7 +2228,7 @@ paths:
               type: string
               pattern: '^[a-zA-Z\-]{2,5}$'
           in: query
-          name: locales
+          name: translatedLanguage
         - schema:
             type: string
             description: "DateTime string with following format: YYYY-MM-DDTHH:MM:SS"
@@ -2108,7 +2340,7 @@ paths:
                       - 00057883-357b-4734-9469-52967e59ef4c
                       - 000b7978-d9bd-49ec-a8f6-a0737368415f
                       - 0015b621-a175-47f5-81fb-5976c88e18c4
-      operationId: get-manga-chapter-readmarkers
+      operationId: get-manga-chapter-readmarkers-2
       description: A list of chapter ids that are marked as read for the given manga ids
       tags:
         - Manga
@@ -3236,6 +3468,70 @@ components:
         version:
           type: integer
           minimum: 1
+    CoverResponse:
+      title: CoverResponse
+      type: object
+      properties:
+        result:
+          type: string
+        data:
+          $ref: '#/components/schemas/Cover'
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+    Cover:
+      title: Cover
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum:
+            - cover_art
+        attributes:
+          $ref: '#/components/schemas/CoverAttributes'
+    CoverAttributes:
+      title: CoverAttributes
+      type: object
+      properties:
+        volume:
+          type: string
+          nullable: true
+        fileName:
+          type: string
+        description:
+          type: string
+          nullable: true
+        version:
+          type: integer
+          minimum: 1
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+    CoverEdit:
+      title: CoverEdit
+      type: object
+      properties:
+        volume:
+          type: string
+          nullable: true
+          minLength: 0
+          maxLength: 8
+        description:
+          type: string
+          nullable: true
+          minLength: 0
+          maxLength: 512
+        version:
+          type: integer
+          minimum: 1
+      required:
+        - version
+        - volume
     AuthorResponse:
       title: AuthorResponse
       type: object
@@ -3481,6 +3777,20 @@ components:
         version:
           type: integer
           minimum: 1
+    CoverList:
+      title: CoverList
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoverResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        total:
+          type: integer
     AuthorList:
       title: AuthorList
       type: object

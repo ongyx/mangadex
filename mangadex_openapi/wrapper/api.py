@@ -65,7 +65,7 @@ class AccountMixin:
         """Create a Mangadex account.
 
         Note that you have to activate the account before you can use it.
-        Check the email's inbox for an actvation code, and then run client.activate_account("<activation code>").
+        Check the email's inbox for an actvation code, and then run client.activate_account("activation code").
 
         Args:
             username (str): The new account name.
@@ -73,7 +73,7 @@ class AccountMixin:
             email (str): The email to register the new account to.
         """
 
-        self.account.post_account_create(mangadex.CreateAccount(**kwargs))
+        self.account.post_account_create(body=mangadex.CreateAccount(**kwargs))
 
     def activate_account(self, code: str):
         """Activate a Mangadex account using a code sent to its email.
@@ -98,7 +98,7 @@ class AccountMixin:
         """Recover a Mangadex account
         (i.e if you forgot your password).
 
-        A recovery code is sent to the email of the account, so call client.recover_complete("<code>", "<new password>").
+        A recovery code is sent to the email of the account, so call client.recover_complete("code", "new password").
 
         Args:
             email: The account's email.
@@ -233,6 +233,13 @@ class ChapterMixin(AtHomeMixin):
         return ["/".join([base_url, mode, attrs.hash, url]) for url in urls]
 
 
+class CoverMixin:
+    def cover(self, id: str) -> mangadex.CoverResponse:
+        """Get cover by id."""
+
+        return self.cover.get_cover_0(id)
+
+
 class MangaMixin:
     def manga_(self, id: str) -> mangadex.MangaResponse:
         """Get manga by id."""
@@ -263,6 +270,11 @@ class SearchMixin:
         utils.convert_datetime(criteria)
 
         return self.search.get_chapter(**criteria)
+
+    def search_covers(self, **criteria) -> mangadex.CoverList:
+        """Search covers by criteria."""
+
+        return self.search.get_cover(**criteria)
 
     def search_groups(self, **criteria) -> mangadex.ScanlationGroupList:
         """Search scanlation groups by criteria."""
