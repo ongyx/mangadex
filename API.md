@@ -34,6 +34,7 @@
     * [search\_covers](#mangadex_openapi.wrapper.api.SearchMixin.search_covers)
     * [search\_groups](#mangadex_openapi.wrapper.api.SearchMixin.search_groups)
     * [search\_manga](#mangadex_openapi.wrapper.api.SearchMixin.search_manga)
+  * [QuickClient](#mangadex_openapi.wrapper.api.QuickClient)
 
 <a name="mangadex_openapi.wrapper.api"></a>
 # mangadex\_openapi.wrapper.api
@@ -45,18 +46,26 @@ Almost every API class from mangadex_openapi has a corrosponding mixin
 
 This keeps the glue code contained within their own classes.
 
-To use a part of the API, subclass Client/AuthedClient and one or more mixins:
+To use a part of the API, subclass `Client`/`AuthedClient` and one or more mixins:
 
+```python
 class MyClient(AuthedClient, MangaMixin):
     pass
+```
 
 and then initalise it:
 
+```python
 client = MyClient()
+```
 
 Finally, use it.
 
+```python
 manga = client.manga_("a96676e5-8ae2-425e-b549-7f15dd34a6d8")
+```
+
+Or you can just use `from mangadex_openapi.wrapper import QuickClient` which subclasses all mixins.
 
 <a name="mangadex_openapi.wrapper.api.Client"></a>
 ## Client Objects
@@ -253,8 +262,10 @@ Get an author by id.
 ## ChapterMixin Objects
 
 ```python
-class ChapterMixin(AtHomeMixin)
+class ChapterMixin()
 ```
+
+To use this mixin, you must subclass AtHomeMixin too.
 
 <a name="mangadex_openapi.wrapper.api.ChapterMixin.chapter"></a>
 #### chapter
@@ -384,4 +395,22 @@ Search scanlation groups by criteria.
 ```
 
 Search manga by criteria.
+
+<a name="mangadex_openapi.wrapper.api.QuickClient"></a>
+## QuickClient Objects
+
+```python
+class QuickClient(
+    AccountMixin, 
+    AuthMixin, 
+    AtHomeMixin, 
+    AuthorMixin, 
+    ChapterMixin, 
+    CoverMixin, 
+    MangaMixin, 
+    SearchMixin, 
+    Client)
+```
+
+All API mixins inherited into one class for easy access.
 

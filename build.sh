@@ -9,7 +9,7 @@ API_SPEC_LATEST="$API_SPEC_DIR/latest.yaml"
 
 API_NAME="mangadex_openapi"
 API_DOCS="api_docs"
-API_VERSION="0.2.0"
+API_VERSION="0.2.1"
 
 BUILD_LOG="build.log"
 

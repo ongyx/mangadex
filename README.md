@@ -7,12 +7,9 @@ Python API to mangadex.org, generated using [swagger-codegen](https://github.com
 A higher-level API is provided for common tasks (docs [here](API.md)):
 
 ```python
-from mangadex_openapi.wrapper import api
+from mangadex_openapi.wrapper import QuickClient
 
-class MangaClient(api.Client, api.MangaMixin, api.ChapterMixin):
-    pass
-
-client = MangaClient()
+client = QuickClient()
 
 chapters = client.feed_chapters("a96676e5-8ae2-425e-b549-7f15dd34a6d8")
 pages = client.pages(chapters.results[0])

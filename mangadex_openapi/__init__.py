@@ -128,4 +128,4 @@ from mangadex_openapi.models.user_attributes import UserAttributes
 from mangadex_openapi.models.user_list import UserList
 from mangadex_openapi.models.user_response import UserResponse
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
