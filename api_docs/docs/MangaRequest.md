@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **last_chapter** | **str** |  | [optional] 
 **publication_demographic** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
-**year** | **int** |  | [optional] 
+**year** | **int** | Year of release | [optional] 
 **content_rating** | **str** |  | [optional] 
 **mod_notes** | **str** |  | [optional] 
 **version** | **int** |  | [optional] 

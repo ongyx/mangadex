@@ -247,7 +247,7 @@ class CoverMixin:
     def cover(self, id: str) -> mangadex.CoverResponse:
         """Get cover by id."""
 
-        return self.cover.get_cover_0(id)
+        return self.cover.get_cover_id(id)
 
 
 class MangaMixin:

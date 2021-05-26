@@ -14,7 +14,7 @@ tags:
   - name: Infrastructure
 info:
   title: MangaDex API
-  version: 5.0.13
+  version: 5.0.12
   contact:
     name: MangaDex staff team
     email: mangadexstaff@gmail.com
@@ -374,7 +374,6 @@ paths:
             type: integer
           in: query
           name: year
-          description: Year of release
         - schema:
             type: array
             items:
@@ -1899,7 +1898,7 @@ paths:
       summary: Get Cover
       tags:
         - Cover
-      operationId: get-cover-id
+      operationId: get-cover
       responses:
         '200':
           description: OK
@@ -1919,7 +1918,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-      security: []
     put:
       summary: Edit Cover
       tags:
@@ -1950,6 +1948,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security: []
     delete:
       summary: Delete Cover
       tags:
@@ -1974,6 +1973,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security: []
   /author:
     get:
       summary: Author list
@@ -2887,7 +2887,6 @@ components:
           nullable: true
           maximum: 9999
           minimum: 1
-          description: Year of release
         contentRating:
           type: string
           nullable: true
@@ -3119,7 +3118,6 @@ components:
         year:
           type: integer
           nullable: true
-          description: Year of release
         contentRating:
           type: string
           nullable: true

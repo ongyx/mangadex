@@ -9,7 +9,7 @@ API_SPEC_LATEST="$API_SPEC_DIR/latest.yaml"
 
 API_NAME="mangadex_openapi"
 API_DOCS="api_docs"
-API_VERSION="0.2.1"
+API_VERSION="0.2.2"
 
 BUILD_LOG="build.log"
 
@@ -144,6 +144,6 @@ EOF
 sed -i 's/(k, value)/(k + "[]", value)/g' $API_NAME/api_client.py
 
 # format all API files
-black $API_NAME/**
+black -q $API_NAME/**
 
 echo "done"

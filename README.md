@@ -33,9 +33,9 @@ The version of this API will remain at 0.y.z until the Mangadex API itself is ou
 
 Make sure you have installed the following:
 
-- `curl`
-- `java` (at least Java 8)
-- `black` (installed if you ran `flit install`)
+-  `curl`
+-  `java` (at least Java 8)
+-  `black` (installed if you ran `flit install`)
 
 The build script will tell you if you haven't installed these yet.
 
@@ -57,51 +57,50 @@ $ ./build.sh nogen
 
 This section attempts to document changes in the spec from version to version.
 
-Legend:
+### 5.0.13
 
-- ⭕: bugfix, probably won't break existing code
-- ❗: minor change, may break existing code
-- 💥: major change, will break existing code
+- Changed name of endpoint `/cover/{id}` from `get-cover-id` to `get-cover`.
+  Code relying on calls to `CoverApi.get_cover_0` will have to use `CoverApi.get_cover` instead.
 
-### 5.0.12 (Latest)
+### 5.0.12
 
-- ❗ Added endpoint `/cover/{id}`.
-     Given a cover UUID, it returns the filename of the cover.
-- ❗ Added endpoint `/cover`.
-     This can be used to search for manga covers by manga id.
+- Added endpoint `/cover/{id}`.
+  Given a cover UUID, it returns the filename of the cover.
+- Added endpoint `/cover`.
+  This can be used to search for manga covers by manga id.
 
 ### 5.0.8
 
-- ❗ Removed status code 204 from endpoint `/manga`.
-- ❗ Added endpoint `/manga/{id}/aggregate`:
-     Given a manga UUID, it returns a summary of the volumes in the manga.
-     Any chapter without a volume is grouped under the key `N/A`.
-- ❗ Added status code 204 to endpoints
-     `/group`,
-     `/chapter`,
-     `/user/follows/manga/feed`,
-     `/list/{id}/feed`,
-     `/author`,
-     `/manga/{id}/feed`,
-     `/user/follows/group`,
-     `/user/follows/user` and
-     `/user/follows/manga`.
+- Removed status code 204 from endpoint `/manga`.
+- Added endpoint `/manga/{id}/aggregate`:
+  Given a manga UUID, it returns a summary of the volumes in the manga.
+  Any chapter without a volume is grouped under the key `N/A`.
+- Added status code 204 to endpoints
+  `/group`,
+  `/chapter`,
+  `/user/follows/manga/feed`,
+  `/list/{id}/feed`,
+  `/author`,
+  `/manga/{id}/feed`,
+  `/user/follows/group`,
+  `/user/follows/user` and
+  `/user/follows/manga`.
 
 ### 5.0.7
 
-- ❗ Added param `order` to endpoint `/author`:
-     specifies whether to return results in `asc`ending or `desc`ending order.
+- Added param `order` to endpoint `/author`:
+  specifies whether to return results in `asc`ending or `desc`ending order.
 
-- ❗ Added endpoint `/manga/read`:
-     Given a list of manga UUIDs, it returns an array of chapter UUIDs marked as read (requries login)
+- Added endpoint `/manga/read`:
+  Given a list of manga UUIDs, it returns an array of chapter UUIDs marked as read (requries login)
 
-- 💥 The properties `title`, `altTitles` and `description` in MangaAttributes are now of type LocalizedString
-     (localized string mapped to 2-5 letter language code)
+- The properties `title`, `altTitles` and `description` in MangaAttributes are now of type LocalizedString
+  (localized string mapped to 2-5 letter language code)
 
-- 💥 The property `tags` in MangaAttributes now has items of type Tag.
+- The property `tags` in MangaAttributes now has items of type Tag.
 
-- ❗ Added properties `name`, `description` and `group` to TagAttributes.
-     The former's two types are LocalizedString, the latter's type is string.
+- Added properties `name`, `description` and `group` to TagAttributes.
+  The former's two types are LocalizedString, the latter's type is string.
 
 ### 5.0.5
 
@@ -109,7 +108,7 @@ First version that the mangadex_openapi module was generated from.
 
 ## Todo
 
-- [ ] Create a wrapper around the API to make it easier to use.
+-  [ ] Create a wrapper around the API to make it easier to use. (Most post/delete calls not done yet)
 
 ## License
 

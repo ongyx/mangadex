@@ -268,7 +268,7 @@ offset = 56 # int |  (optional)
 title = 'title_example' # str |  (optional)
 authors = ['authors_example'] # list[str] |  (optional)
 artists = ['artists_example'] # list[str] |  (optional)
-year = 56 # int |  (optional)
+year = 56 # int | Year of release (optional)
 included_tags = ['included_tags_example'] # list[str] |  (optional)
 included_tags_mode = 'AND' # str |  (optional) (default to AND)
 excluded_tags = ['excluded_tags_example'] # list[str] |  (optional)
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
  **title** | **str**|  | [optional] 
  **authors** | [**list[str]**](str.md)|  | [optional] 
  **artists** | [**list[str]**](str.md)|  | [optional] 
- **year** | **int**|  | [optional] 
+ **year** | **int**| Year of release | [optional] 
  **included_tags** | [**list[str]**](str.md)|  | [optional] 
  **included_tags_mode** | **str**|  | [optional] [default to AND]
  **excluded_tags** | [**list[str]**](str.md)|  | [optional] 
