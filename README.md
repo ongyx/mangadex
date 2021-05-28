@@ -57,6 +57,10 @@ $ ./build.sh nogen
 
 This section attempts to document changes in the spec from version to version.
 
+### 5.0.15
+
+- Version bump, idk why (maybe some low-level API change?)
+
 ### 5.0.13
 
 - Changed name of endpoint `/cover/{id}` from `get-cover-id` to `get-cover`.
