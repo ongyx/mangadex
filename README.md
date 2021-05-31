@@ -7,11 +7,16 @@ Python API to mangadex.org, generated using [swagger-codegen](https://github.com
 A higher-level API is provided for common tasks (docs [here](API.md)):
 
 ```python
-from mangadex_openapi.wrapper import QuickClient
+import mangadex_openapi as mangadex
 
-client = QuickClient()
+client = mangadex.QuickClient()
 
-chapters = client.feed_chapters("a96676e5-8ae2-425e-b549-7f15dd34a6d8")
+manga_id = "a96676e5-8ae2-425e-b549-7f15dd34a6d8"
+
+# get the chapters for the manga id...
+chapters = client.chapters(manga_id)
+
+# ...and get a list of page urls for the first chapter in the result.
 pages = client.pages(chapters.results[0])
 ```
 
@@ -56,6 +61,12 @@ $ ./build.sh nogen
 ## Spec Changes
 
 This section attempts to document changes in the spec from version to version.
+
+### 5.0.17
+
+- Added documentation on how to retrieve manga covers.
+- Added a `none` value to the contentRating enum.
+- All GET endpoints for UUIDs (i.e get-manga-id, get-chapter-id, get-cover-id, etc.) now return 404 with an ErrorResponse if the UUID was not found.
 
 ### 5.0.15
 
@@ -112,7 +123,7 @@ First version that the mangadex_openapi module was generated from.
 
 ## Todo
 
--  [ ] Create a wrapper around the API to make it easier to use. (Most post/delete calls not done yet)
+-  [x] Create a wrapper around the API to make it easier to use. (Most post/delete calls not done yet)
 
 ## License
 

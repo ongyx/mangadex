@@ -3,20 +3,18 @@
 
 Almost every API class from mangadex_openapi has a corrosponding mixin
 (i.e MangaApi -> MangaMixin).
-
 This keeps the glue code contained within their own classes.
 
-To use a part of the API, subclass `Client`/`AuthedClient` and one or more mixins:
+But you can just import the `QuickClient` class which subclasses all mixins:
 
 ```python
-class MyClient(AuthedClient, MangaMixin):
-    pass
+from mangadex_openapi import QuickClient
 ```
 
 and then initalise it:
 
 ```python
-client = MyClient()
+client = QuickClient()
 ```
 
 Finally, use it.
@@ -24,12 +22,10 @@ Finally, use it.
 ```python
 manga = client.manga_("a96676e5-8ae2-425e-b549-7f15dd34a6d8")
 ```
-
-Or you can just use `from mangadex_openapi.wrapper import QuickClient` which subclasses all mixins.
 """
 
 import logging
-from typing import List
+from typing import List, Literal, Optional
 
 import mangadex_openapi as mangadex
 
@@ -185,7 +181,7 @@ class AtHomeMixin:
 
 
 class AuthorMixin:
-    def author(self, id: str) -> mangadex.AuthorResponse:
+    def author_(self, id: str) -> mangadex.AuthorResponse:
         """Get an author by id."""
 
         return self.author.get_author_id(id)
@@ -211,7 +207,7 @@ class AuthorMixin:
 class ChapterMixin:
     """To use this mixin, you must subclass AtHomeMixin too."""
 
-    def chapter(self, id: str) -> mangadex.ChapterResponse:
+    def chapter_(self, id: str) -> mangadex.ChapterResponse:
         """Get a chapter by id."""
 
         return self.chapter.get_chapter_id(id)
@@ -229,6 +225,16 @@ class ChapterMixin:
     def pages(
         self, chapter: mangadex.ChapterResponse, saver: bool = False
     ) -> List[str]:
+        """Retreive the page urls for a given chapter.
+
+        Args:
+            chapter: The chapter response.
+            saver: Whether or not to use data saver urls (lower quality but smaller download size).
+                Defaults to False.
+
+        Returns:
+            A list of page urls.
+        """
         attrs = chapter.data.attributes
 
         base_url = self.at_home.get_at_home_server_chapter_id(chapter.data.id).base_url
@@ -243,30 +249,78 @@ class ChapterMixin:
         return ["/".join([base_url, mode, attrs.hash, url]) for url in urls]
 
 
-class CoverMixin:
-    def cover(self, id: str) -> mangadex.CoverResponse:
+class MangaMixin:
+    def cover_(self, id: str) -> mangadex.CoverResponse:
         """Get cover by id."""
 
         return self.cover.get_cover_id(id)
 
-
-class MangaMixin:
     def manga_(self, id: str) -> mangadex.MangaResponse:
         """Get manga by id."""
 
         return self.manga.get_manga_id(id)
+
+    def cover_page(
+        self, manga: mangadex.MangaResponse, *, size: Literal["og", "512", "256"] = "og"
+    ) -> Optional[str]:
+        """Retreive the cover url for a manga.
+
+        Args:
+            manga: The manga response object.
+            size: Which cover size the url should resolve to.
+                It should be one of the following (as a str):
+
+                - `og`: Original size.
+                - `512`: Thumbnail at most 512px wide.
+                - `256`: Thumbnail at most 256px wide.
+
+                Defaults to `og`.
+
+        Returns:
+            The cover url if the manga has a cover, otherwise None.
+        """
+
+        cover_id = None
+
+        for relation in manga.relationships:
+            if relation.type == "cover_art":
+                cover_id = relation.id
+
+        if cover_id is None:
+            return
+
+        cover_resp = self.cover_(cover_id)
+        cover_filename = cover_resp.data.attributes.file_name
+
+        if size == "og":
+            ext = ""
+        else:
+            ext = f".{size}.jpg"
+
+        return (
+            f"https://uploads.mangadex.org/covers/{manga.data.id}/{cover_filename}{ext}"
+        )
 
     def aggregate(self, id: str) -> mangadex.InlineResponse200:
         """Get a summary of volume and chapter info on manga by id."""
 
         return self.manga.manga_id_aggregate_get(id)
 
-    def feed_chapters(self, id: str, **criteria) -> mangadex.ChapterList:
+    def chapters(self, id: str, **criteria) -> mangadex.ChapterList:
         """Get chapters for a manga by id."""
 
         utils.convert_datetime(criteria)
 
         return self.manga.get_manga_id_feed(id, **criteria)
+
+    def random(self) -> mangadex.MangaResponse:
+        """Get a random manga.
+
+        Returns:
+            The manga response.
+        """
+
+        return self.manga.get_manga_random()
 
 
 class SearchMixin:
@@ -298,21 +352,16 @@ class SearchMixin:
         return self.search.get_search_manga(**criteria)
 
 
-class AuthedClient(AuthMixin, Client):
-    pass
-
-
 class QuickClient(
     AccountMixin,
     AuthMixin,
     AtHomeMixin,
     AuthorMixin,
     ChapterMixin,
-    CoverMixin,
     MangaMixin,
     SearchMixin,
     Client,
 ):
-    """All API mixins inherited into one class for easy access."""
+    """'Public' interface to all mixins."""
 
     pass

@@ -1,1 +1,1 @@
-pydoc-markdown -m mangadex_openapi.wrapper.api --render-toc > API.md
+pydoc-markdown -m mangadex_openapi.wrapper.core --render-toc > API.md

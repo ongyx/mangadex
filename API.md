@@ -1,62 +1,62 @@
 # Table of Contents
 
-* [mangadex\_openapi.wrapper.api](#mangadex_openapi.wrapper.api)
-  * [Client](#mangadex_openapi.wrapper.api.Client)
-    * [ping](#mangadex_openapi.wrapper.api.Client.ping)
-  * [AccountMixin](#mangadex_openapi.wrapper.api.AccountMixin)
-    * [create\_account](#mangadex_openapi.wrapper.api.AccountMixin.create_account)
-    * [activate\_account](#mangadex_openapi.wrapper.api.AccountMixin.activate_account)
-    * [actiavte\_resend](#mangadex_openapi.wrapper.api.AccountMixin.actiavte_resend)
-    * [recover\_account](#mangadex_openapi.wrapper.api.AccountMixin.recover_account)
-    * [recover\_complete](#mangadex_openapi.wrapper.api.AccountMixin.recover_complete)
-  * [AuthMixin](#mangadex_openapi.wrapper.api.AuthMixin)
-    * [login](#mangadex_openapi.wrapper.api.AuthMixin.login)
-    * [logout](#mangadex_openapi.wrapper.api.AuthMixin.logout)
-    * [refresh](#mangadex_openapi.wrapper.api.AuthMixin.refresh)
-    * [check](#mangadex_openapi.wrapper.api.AuthMixin.check)
-  * [AtHomeMixin](#mangadex_openapi.wrapper.api.AtHomeMixin)
-    * [server](#mangadex_openapi.wrapper.api.AtHomeMixin.server)
-  * [AuthorMixin](#mangadex_openapi.wrapper.api.AuthorMixin)
-    * [author](#mangadex_openapi.wrapper.api.AuthorMixin.author)
-  * [ChapterMixin](#mangadex_openapi.wrapper.api.ChapterMixin)
-    * [chapter](#mangadex_openapi.wrapper.api.ChapterMixin.chapter)
-    * [mark\_read](#mangadex_openapi.wrapper.api.ChapterMixin.mark_read)
-    * [mark\_unread](#mangadex_openapi.wrapper.api.ChapterMixin.mark_unread)
-  * [CoverMixin](#mangadex_openapi.wrapper.api.CoverMixin)
-    * [cover](#mangadex_openapi.wrapper.api.CoverMixin.cover)
-  * [MangaMixin](#mangadex_openapi.wrapper.api.MangaMixin)
-    * [manga\_](#mangadex_openapi.wrapper.api.MangaMixin.manga_)
-    * [aggregate](#mangadex_openapi.wrapper.api.MangaMixin.aggregate)
-    * [feed\_chapters](#mangadex_openapi.wrapper.api.MangaMixin.feed_chapters)
-  * [SearchMixin](#mangadex_openapi.wrapper.api.SearchMixin)
-    * [search\_authors](#mangadex_openapi.wrapper.api.SearchMixin.search_authors)
-    * [search\_chapters](#mangadex_openapi.wrapper.api.SearchMixin.search_chapters)
-    * [search\_covers](#mangadex_openapi.wrapper.api.SearchMixin.search_covers)
-    * [search\_groups](#mangadex_openapi.wrapper.api.SearchMixin.search_groups)
-    * [search\_manga](#mangadex_openapi.wrapper.api.SearchMixin.search_manga)
-  * [QuickClient](#mangadex_openapi.wrapper.api.QuickClient)
+* [mangadex\_openapi.wrapper.core](#mangadex_openapi.wrapper.core)
+  * [Client](#mangadex_openapi.wrapper.core.Client)
+    * [ping](#mangadex_openapi.wrapper.core.Client.ping)
+  * [AccountMixin](#mangadex_openapi.wrapper.core.AccountMixin)
+    * [create\_account](#mangadex_openapi.wrapper.core.AccountMixin.create_account)
+    * [activate\_account](#mangadex_openapi.wrapper.core.AccountMixin.activate_account)
+    * [actiavte\_resend](#mangadex_openapi.wrapper.core.AccountMixin.actiavte_resend)
+    * [recover\_account](#mangadex_openapi.wrapper.core.AccountMixin.recover_account)
+    * [recover\_complete](#mangadex_openapi.wrapper.core.AccountMixin.recover_complete)
+  * [AuthMixin](#mangadex_openapi.wrapper.core.AuthMixin)
+    * [login](#mangadex_openapi.wrapper.core.AuthMixin.login)
+    * [logout](#mangadex_openapi.wrapper.core.AuthMixin.logout)
+    * [refresh](#mangadex_openapi.wrapper.core.AuthMixin.refresh)
+    * [check](#mangadex_openapi.wrapper.core.AuthMixin.check)
+  * [AtHomeMixin](#mangadex_openapi.wrapper.core.AtHomeMixin)
+    * [server](#mangadex_openapi.wrapper.core.AtHomeMixin.server)
+  * [AuthorMixin](#mangadex_openapi.wrapper.core.AuthorMixin)
+    * [author\_](#mangadex_openapi.wrapper.core.AuthorMixin.author_)
+  * [ChapterMixin](#mangadex_openapi.wrapper.core.ChapterMixin)
+    * [chapter\_](#mangadex_openapi.wrapper.core.ChapterMixin.chapter_)
+    * [mark\_read](#mangadex_openapi.wrapper.core.ChapterMixin.mark_read)
+    * [mark\_unread](#mangadex_openapi.wrapper.core.ChapterMixin.mark_unread)
+    * [pages](#mangadex_openapi.wrapper.core.ChapterMixin.pages)
+  * [MangaMixin](#mangadex_openapi.wrapper.core.MangaMixin)
+    * [cover\_](#mangadex_openapi.wrapper.core.MangaMixin.cover_)
+    * [manga\_](#mangadex_openapi.wrapper.core.MangaMixin.manga_)
+    * [cover\_page](#mangadex_openapi.wrapper.core.MangaMixin.cover_page)
+    * [aggregate](#mangadex_openapi.wrapper.core.MangaMixin.aggregate)
+    * [chapters](#mangadex_openapi.wrapper.core.MangaMixin.chapters)
+    * [random](#mangadex_openapi.wrapper.core.MangaMixin.random)
+  * [SearchMixin](#mangadex_openapi.wrapper.core.SearchMixin)
+    * [search\_authors](#mangadex_openapi.wrapper.core.SearchMixin.search_authors)
+    * [search\_chapters](#mangadex_openapi.wrapper.core.SearchMixin.search_chapters)
+    * [search\_covers](#mangadex_openapi.wrapper.core.SearchMixin.search_covers)
+    * [search\_groups](#mangadex_openapi.wrapper.core.SearchMixin.search_groups)
+    * [search\_manga](#mangadex_openapi.wrapper.core.SearchMixin.search_manga)
+  * [QuickClient](#mangadex_openapi.wrapper.core.QuickClient)
 
-<a name="mangadex_openapi.wrapper.api"></a>
-# mangadex\_openapi.wrapper.api
+<a name="mangadex_openapi.wrapper.core"></a>
+# mangadex\_openapi.wrapper.core
 
 Classes here wrap parts of the mangadex API for more version-agonistic code.
 
 Almost every API class from mangadex_openapi has a corrosponding mixin
 (i.e MangaApi -> MangaMixin).
-
 This keeps the glue code contained within their own classes.
 
-To use a part of the API, subclass `Client`/`AuthedClient` and one or more mixins:
+But you can just import the `QuickClient` class which subclasses all mixins:
 
 ```python
-class MyClient(AuthedClient, MangaMixin):
-    pass
+from mangadex_openapi import QuickClient
 ```
 
 and then initalise it:
 
 ```python
-client = MyClient()
+client = QuickClient()
 ```
 
 Finally, use it.
@@ -65,9 +65,7 @@ Finally, use it.
 manga = client.manga_("a96676e5-8ae2-425e-b549-7f15dd34a6d8")
 ```
 
-Or you can just use `from mangadex_openapi.wrapper import QuickClient` which subclasses all mixins.
-
-<a name="mangadex_openapi.wrapper.api.Client"></a>
+<a name="mangadex_openapi.wrapper.core.Client"></a>
 ## Client Objects
 
 ```python
@@ -81,7 +79,7 @@ Base client that wraps mangadex.ApiClient.
 - `session_token` _str_ - The token for the current session.
 - `persist_token` _str_ - The token for the persistent session (can be reused later on).
 
-<a name="mangadex_openapi.wrapper.api.Client.ping"></a>
+<a name="mangadex_openapi.wrapper.core.Client.ping"></a>
 #### ping
 
 ```python
@@ -90,14 +88,14 @@ Base client that wraps mangadex.ApiClient.
 
 Ping the Mangadex server to check whether it is online.
 
-<a name="mangadex_openapi.wrapper.api.AccountMixin"></a>
+<a name="mangadex_openapi.wrapper.core.AccountMixin"></a>
 ## AccountMixin Objects
 
 ```python
 class AccountMixin()
 ```
 
-<a name="mangadex_openapi.wrapper.api.AccountMixin.create_account"></a>
+<a name="mangadex_openapi.wrapper.core.AccountMixin.create_account"></a>
 #### create\_account
 
 ```python
@@ -115,7 +113,7 @@ Check the email's inbox for an actvation code, and then run client.activate_acco
 - `password` _str_ - The new account password.
 - `email` _str_ - The email to register the new account to.
 
-<a name="mangadex_openapi.wrapper.api.AccountMixin.activate_account"></a>
+<a name="mangadex_openapi.wrapper.core.AccountMixin.activate_account"></a>
 #### activate\_account
 
 ```python
@@ -128,7 +126,7 @@ Activate a Mangadex account using a code sent to its email.
 
 - `code` - The activation code.
 
-<a name="mangadex_openapi.wrapper.api.AccountMixin.actiavte_resend"></a>
+<a name="mangadex_openapi.wrapper.core.AccountMixin.actiavte_resend"></a>
 #### actiavte\_resend
 
 ```python
@@ -141,7 +139,7 @@ Resend an activation code to a new Mangadex account.
 
 - `email` - The new account's email.
 
-<a name="mangadex_openapi.wrapper.api.AccountMixin.recover_account"></a>
+<a name="mangadex_openapi.wrapper.core.AccountMixin.recover_account"></a>
 #### recover\_account
 
 ```python
@@ -157,7 +155,7 @@ A recovery code is sent to the email of the account, so call client.recover_comp
 
 - `email` - The account's email.
 
-<a name="mangadex_openapi.wrapper.api.AccountMixin.recover_complete"></a>
+<a name="mangadex_openapi.wrapper.core.AccountMixin.recover_complete"></a>
 #### recover\_complete
 
 ```python
@@ -171,14 +169,14 @@ Complete recovery of a Mangadex account.
 - `code` - The recovery code sent to the account's email.
 - `password` - The new password to change the account to.
 
-<a name="mangadex_openapi.wrapper.api.AuthMixin"></a>
+<a name="mangadex_openapi.wrapper.core.AuthMixin"></a>
 ## AuthMixin Objects
 
 ```python
 class AuthMixin()
 ```
 
-<a name="mangadex_openapi.wrapper.api.AuthMixin.login"></a>
+<a name="mangadex_openapi.wrapper.core.AuthMixin.login"></a>
 #### login
 
 ```python
@@ -192,7 +190,7 @@ Authenticate this client by logging in.
 - `username` - The account name.
 - `password` - The account password.
 
-<a name="mangadex_openapi.wrapper.api.AuthMixin.logout"></a>
+<a name="mangadex_openapi.wrapper.core.AuthMixin.logout"></a>
 #### logout
 
 ```python
@@ -201,7 +199,7 @@ Authenticate this client by logging in.
 
 Deauthenticate this client by logging out.
 
-<a name="mangadex_openapi.wrapper.api.AuthMixin.refresh"></a>
+<a name="mangadex_openapi.wrapper.core.AuthMixin.refresh"></a>
 #### refresh
 
 ```python
@@ -210,7 +208,7 @@ Deauthenticate this client by logging out.
 
 Refresh this client's session token (expires every 15 minutes).
 
-<a name="mangadex_openapi.wrapper.api.AuthMixin.check"></a>
+<a name="mangadex_openapi.wrapper.core.AuthMixin.check"></a>
 #### check
 
 ```python
@@ -219,14 +217,14 @@ Refresh this client's session token (expires every 15 minutes).
 
 Get the authentication status of this client.
 
-<a name="mangadex_openapi.wrapper.api.AtHomeMixin"></a>
+<a name="mangadex_openapi.wrapper.core.AtHomeMixin"></a>
 ## AtHomeMixin Objects
 
 ```python
 class AtHomeMixin()
 ```
 
-<a name="mangadex_openapi.wrapper.api.AtHomeMixin.server"></a>
+<a name="mangadex_openapi.wrapper.core.AtHomeMixin.server"></a>
 #### server
 
 ```python
@@ -242,23 +240,23 @@ Get the server url for a chapter id.
   Some networks may block connections to other ports (which Mangadex@Home servers may use).
   Defaults to False.
 
-<a name="mangadex_openapi.wrapper.api.AuthorMixin"></a>
+<a name="mangadex_openapi.wrapper.core.AuthorMixin"></a>
 ## AuthorMixin Objects
 
 ```python
 class AuthorMixin()
 ```
 
-<a name="mangadex_openapi.wrapper.api.AuthorMixin.author"></a>
-#### author
+<a name="mangadex_openapi.wrapper.core.AuthorMixin.author_"></a>
+#### author\_
 
 ```python
- | author(id: str) -> mangadex.AuthorResponse
+ | author_(id: str) -> mangadex.AuthorResponse
 ```
 
 Get an author by id.
 
-<a name="mangadex_openapi.wrapper.api.ChapterMixin"></a>
+<a name="mangadex_openapi.wrapper.core.ChapterMixin"></a>
 ## ChapterMixin Objects
 
 ```python
@@ -267,16 +265,16 @@ class ChapterMixin()
 
 To use this mixin, you must subclass AtHomeMixin too.
 
-<a name="mangadex_openapi.wrapper.api.ChapterMixin.chapter"></a>
-#### chapter
+<a name="mangadex_openapi.wrapper.core.ChapterMixin.chapter_"></a>
+#### chapter\_
 
 ```python
- | chapter(id: str) -> mangadex.ChapterResponse
+ | chapter_(id: str) -> mangadex.ChapterResponse
 ```
 
 Get a chapter by id.
 
-<a name="mangadex_openapi.wrapper.api.ChapterMixin.mark_read"></a>
+<a name="mangadex_openapi.wrapper.core.ChapterMixin.mark_read"></a>
 #### mark\_read
 
 ```python
@@ -285,7 +283,7 @@ Get a chapter by id.
 
 Mark a chapter by id as read for the current user.
 
-<a name="mangadex_openapi.wrapper.api.ChapterMixin.mark_unread"></a>
+<a name="mangadex_openapi.wrapper.core.ChapterMixin.mark_unread"></a>
 #### mark\_unread
 
 ```python
@@ -294,30 +292,43 @@ Mark a chapter by id as read for the current user.
 
 Mark a chapter by id as unread for the current user.
 
-<a name="mangadex_openapi.wrapper.api.CoverMixin"></a>
-## CoverMixin Objects
+<a name="mangadex_openapi.wrapper.core.ChapterMixin.pages"></a>
+#### pages
 
 ```python
-class CoverMixin()
+ | pages(chapter: mangadex.ChapterResponse, saver: bool = False) -> List[str]
 ```
 
-<a name="mangadex_openapi.wrapper.api.CoverMixin.cover"></a>
-#### cover
+Retreive the page urls for a given chapter.
 
-```python
- | cover(id: str) -> mangadex.CoverResponse
-```
+**Arguments**:
 
-Get cover by id.
+- `chapter` - The chapter response.
+- `saver` - Whether or not to use data saver urls (lower quality but smaller download size).
+  Defaults to False.
+  
 
-<a name="mangadex_openapi.wrapper.api.MangaMixin"></a>
+**Returns**:
+
+  A list of page urls.
+
+<a name="mangadex_openapi.wrapper.core.MangaMixin"></a>
 ## MangaMixin Objects
 
 ```python
 class MangaMixin()
 ```
 
-<a name="mangadex_openapi.wrapper.api.MangaMixin.manga_"></a>
+<a name="mangadex_openapi.wrapper.core.MangaMixin.cover_"></a>
+#### cover\_
+
+```python
+ | cover_(id: str) -> mangadex.CoverResponse
+```
+
+Get cover by id.
+
+<a name="mangadex_openapi.wrapper.core.MangaMixin.manga_"></a>
 #### manga\_
 
 ```python
@@ -326,7 +337,33 @@ class MangaMixin()
 
 Get manga by id.
 
-<a name="mangadex_openapi.wrapper.api.MangaMixin.aggregate"></a>
+<a name="mangadex_openapi.wrapper.core.MangaMixin.cover_page"></a>
+#### cover\_page
+
+```python
+ | cover_page(manga: mangadex.MangaResponse, *, size: Literal["og", "512", "256"] = "og") -> Optional[str]
+```
+
+Retreive the cover url for a manga.
+
+**Arguments**:
+
+- `manga` - The manga response object.
+- `size` - Which cover size the url should resolve to.
+  It should be one of the following (as a str):
+  
+  - `og`: Original size.
+  - `512`: Thumbnail at most 512px wide.
+  - `256`: Thumbnail at most 256px wide.
+  
+  Defaults to `og`.
+  
+
+**Returns**:
+
+  The cover url if the manga has a cover, otherwise None.
+
+<a name="mangadex_openapi.wrapper.core.MangaMixin.aggregate"></a>
 #### aggregate
 
 ```python
@@ -335,23 +372,36 @@ Get manga by id.
 
 Get a summary of volume and chapter info on manga by id.
 
-<a name="mangadex_openapi.wrapper.api.MangaMixin.feed_chapters"></a>
-#### feed\_chapters
+<a name="mangadex_openapi.wrapper.core.MangaMixin.chapters"></a>
+#### chapters
 
 ```python
- | feed_chapters(id: str, **criteria) -> mangadex.ChapterList
+ | chapters(id: str, **criteria) -> mangadex.ChapterList
 ```
 
 Get chapters for a manga by id.
 
-<a name="mangadex_openapi.wrapper.api.SearchMixin"></a>
+<a name="mangadex_openapi.wrapper.core.MangaMixin.random"></a>
+#### random
+
+```python
+ | random() -> mangadex.MangaResponse
+```
+
+Get a random manga.
+
+**Returns**:
+
+  The manga response.
+
+<a name="mangadex_openapi.wrapper.core.SearchMixin"></a>
 ## SearchMixin Objects
 
 ```python
 class SearchMixin()
 ```
 
-<a name="mangadex_openapi.wrapper.api.SearchMixin.search_authors"></a>
+<a name="mangadex_openapi.wrapper.core.SearchMixin.search_authors"></a>
 #### search\_authors
 
 ```python
@@ -360,7 +410,7 @@ class SearchMixin()
 
 Search authors by criteria.
 
-<a name="mangadex_openapi.wrapper.api.SearchMixin.search_chapters"></a>
+<a name="mangadex_openapi.wrapper.core.SearchMixin.search_chapters"></a>
 #### search\_chapters
 
 ```python
@@ -369,7 +419,7 @@ Search authors by criteria.
 
 Search chapters by criteria.
 
-<a name="mangadex_openapi.wrapper.api.SearchMixin.search_covers"></a>
+<a name="mangadex_openapi.wrapper.core.SearchMixin.search_covers"></a>
 #### search\_covers
 
 ```python
@@ -378,7 +428,7 @@ Search chapters by criteria.
 
 Search covers by criteria.
 
-<a name="mangadex_openapi.wrapper.api.SearchMixin.search_groups"></a>
+<a name="mangadex_openapi.wrapper.core.SearchMixin.search_groups"></a>
 #### search\_groups
 
 ```python
@@ -387,7 +437,7 @@ Search covers by criteria.
 
 Search scanlation groups by criteria.
 
-<a name="mangadex_openapi.wrapper.api.SearchMixin.search_manga"></a>
+<a name="mangadex_openapi.wrapper.core.SearchMixin.search_manga"></a>
 #### search\_manga
 
 ```python
@@ -396,7 +446,7 @@ Search scanlation groups by criteria.
 
 Search manga by criteria.
 
-<a name="mangadex_openapi.wrapper.api.QuickClient"></a>
+<a name="mangadex_openapi.wrapper.core.QuickClient"></a>
 ## QuickClient Objects
 
 ```python
@@ -406,11 +456,10 @@ class QuickClient(
     AtHomeMixin, 
     AuthorMixin, 
     ChapterMixin, 
-    CoverMixin, 
     MangaMixin, 
     SearchMixin, 
     Client)
 ```
 
-All API mixins inherited into one class for easy access.
+'Public' interface to all mixins.
 

@@ -583,7 +583,7 @@ status = ['status_example'] # list[str] |  (optional)
 original_language = ['original_language_example'] # list[str] |  (optional)
 publication_demographic = ['publication_demographic_example'] # list[str] |  (optional)
 ids = ['ids_example'] # list[str] | Manga ids (limited to 100 per request) (optional)
-content_rating = ['content_rating_example'] # list[str] |  (optional)
+content_rating = ['[\"none\",\"safe\",\"suggestive\",\"erotica\"]'] # list[str] |  (optional) (default to ["none","safe","suggestive","erotica"])
 created_at_since = 'created_at_since_example' # str |  (optional)
 updated_at_since = 'updated_at_since_example' # str |  (optional)
 order = mangadex_openapi.Order() # Order |  (optional)
@@ -614,7 +614,7 @@ Name | Type | Description  | Notes
  **original_language** | [**list[str]**](str.md)|  | [optional] 
  **publication_demographic** | [**list[str]**](str.md)|  | [optional] 
  **ids** | [**list[str]**](str.md)| Manga ids (limited to 100 per request) | [optional] 
- **content_rating** | [**list[str]**](str.md)|  | [optional] 
+ **content_rating** | [**list[str]**](str.md)|  | [optional] [default to [&quot;none&quot;,&quot;safe&quot;,&quot;suggestive&quot;,&quot;erotica&quot;]]
  **created_at_since** | **str**|  | [optional] 
  **updated_at_since** | **str**|  | [optional] 
  **order** | [**Order**](.md)|  | [optional] 

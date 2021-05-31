@@ -9,7 +9,7 @@ API_SPEC_LATEST="$API_SPEC_DIR/latest.yaml"
 
 API_NAME="mangadex_openapi"
 API_DOCS="api_docs"
-API_VERSION="0.2.3"
+API_VERSION="0.3.0"
 
 BUILD_LOG="build.log"
 
@@ -136,6 +136,8 @@ echo "patching API (this might take a while)"
 
 # Add version string
 cat << EOF >> $API_NAME/__init__.py
+
+from mangadex_openapi.wrapper.core import QuickClient
 
 __version__ = "$API_VERSION"
 EOF

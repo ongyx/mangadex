@@ -14,7 +14,7 @@ tags:
   - name: Infrastructure
 info:
   title: MangaDex API
-  version: 5.0.17
+  version: 5.0.15
   contact:
     name: MangaDex staff team
     email: mangadexstaff@gmail.com
@@ -218,36 +218,6 @@ info:
 
     While not strictly necessary, this helps us monitor the network's healthiness, and we appreciate your cooperation towards this goal. If no one reports
     successes and failures, we have no way to know that a given server is slow/broken, which eventually results in broken image retrieval for everyone.
-
-    # Retrieving Covers from the API
-
-    ## Construct Cover URLs
-
-    ### Source (original/best quality)
-
-    `https://uploads.mangadex.org/covers/{ manga.id }/{ cover.filename }`<br/>
-    The extension can be png, jpeg or gif.
-
-    Example: `https://uploads.mangadex.org/covers/8f3e1818-a015-491d-bd81-3addc4d7d56a/4113e972-d228-4172-a885-cb30baffff97.jpg`
-
-    ### <=512px wide thumbnail
-
-    `https://uploads.mangadex.org/covers/{ manga.id }/{ cover.filename }.512.jpg`<br/>
-    The extension is always jpg.
-
-    Example: `https://uploads.mangadex.org/covers/8f3e1818-a015-491d-bd81-3addc4d7d56a/4113e972-d228-4172-a885-cb30baffff97.jpg.512.jpg`
-
-    ### <=256px wide thumbnail
-
-    `https://uploads.mangadex.org/covers/{ manga.id }/{ cover.filename }.256.jpg`<br/>
-    The extension is always jpg.
-
-    Example: `https://uploads.mangadex.org/covers/8f3e1818-a015-491d-bd81-3addc4d7d56a/4113e972-d228-4172-a885-cb30baffff97.jpg.256.jpg`
-
-    ## ℹ️ Where to find Cover filename ?
-
-    Look at the [Get cover operation](#operation/get-cover) endpoint to get Cover information.
-    Also, if you get a Manga resource, you'll have, if available a `covert_art` relationship which is the main cover id.
 
     # Static data
 
@@ -475,11 +445,9 @@ paths:
           description: Manga ids (limited to 100 per request)
         - schema:
             type: array
-            default: [none, safe, suggestive, erotica]
             items:
               type: string
               enum:
-                - none
                 - safe
                 - suggestive
                 - erotica
@@ -624,10 +592,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '404':
           description: Manga no content
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
       operationId: get-manga-id
       description: View Manga.
       security: []
@@ -959,10 +923,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '404':
           description: ScanlationGroup not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
       operationId: get-group-id
       security: []
     put:
@@ -1122,10 +1082,6 @@ paths:
                 $ref: '#/components/schemas/CustomListResponse'
         '404':
           description: CustomList not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
       operationId: get-list-id
     put:
       summary: Update CustomList
@@ -1526,10 +1482,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '404':
           description: Chapter not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
       operationId: get-chapter-id
       security: []
     put:
@@ -1967,12 +1919,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-        '404':
-          description: CoverArt not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
       security: []
     put:
       summary: Edit Cover
@@ -2145,11 +2091,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '404':
-          description: Author no content
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+          description: Author not found
       operationId: get-author-id
       security: []
     put:
