@@ -14,7 +14,7 @@ tags:
   - name: Infrastructure
 info:
   title: MangaDex API
-  version: 5.0.21
+  version: 5.0.20
   contact:
     name: MangaDex staff team
     email: mangadexstaff@gmail.com

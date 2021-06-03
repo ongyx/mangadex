@@ -2,7 +2,7 @@
 
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
-This project is no longer maintained. You should use the [mangadex](https://github.com/EMACC99/mangadex) module instead.
+This project is no longer maintained. You should use another package instead (just google `mangadex python`).
 
 If you do really want to still use this:
 
@@ -74,9 +74,13 @@ $ ./build.sh nogen
 
 This section attempts to document changes in the spec from version to version.
 
-### 5.0.20
+### 5.0.21
 
 This is the final version mangadex_openapi will be updated to.
+
+- Yet another version bump.
+
+### 5.0.20
 
 - Another version bump.
 
