@@ -123,9 +123,8 @@ import mangadex_openapi
 from mangadex_openapi.rest import ApiException
 from pprint import pprint
 
-
 # create an instance of the API class
-api_instance = mangadex_openapi.CustomListApi(mangadex_openapi.ApiClient(configuration))
+api_instance = mangadex_openapi.CustomListApi()
 id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # str | CustomList ID
 
 try:
@@ -148,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+No authorization required
 
 ### HTTP request headers
 

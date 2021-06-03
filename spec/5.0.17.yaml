@@ -14,7 +14,7 @@ tags:
   - name: Infrastructure
 info:
   title: MangaDex API
-  version: 5.0.20
+  version: 5.0.17
   contact:
     name: MangaDex staff team
     email: mangadexstaff@gmail.com
@@ -1127,7 +1127,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
       operationId: get-list-id
-      security: []
     put:
       summary: Update CustomList
       operationId: put-list-id

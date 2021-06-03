@@ -20,3 +20,8 @@ def test_cover():
     manga = client.manga_(mid)
     cover_url = client.cover_page(manga)
     print(cover_url)
+
+
+def test_author():
+    manga = client.manga_(mid)
+    print(client.authors(manga))

@@ -1,3 +1,15 @@
+# DEPRECIATED
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+This project is no longer maintained. You should use the [mangadex](https://github.com/EMACC99/mangadex) module instead.
+
+If you do really want to still use this:
+
+1. Increment `API_VERSION` in [build.sh](./build.sh).
+2. Build with `./build.sh` (updates the auto-generated API code).
+3. Update the wrapper documentation with `./create_docs.sh`.
+
 # mangadex_openapi
 
 Python API to mangadex.org, generated using [swagger-codegen](https://github.com/swagger-api/swagger-codegen).
@@ -61,6 +73,12 @@ $ ./build.sh nogen
 ## Spec Changes
 
 This section attempts to document changes in the spec from version to version.
+
+### 5.0.20
+
+This is the final version mangadex_openapi will be updated to.
+
+- Another version bump.
 
 ### 5.0.17
 

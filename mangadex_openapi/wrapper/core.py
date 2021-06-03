@@ -260,6 +260,33 @@ class MangaMixin:
 
         return self.manga.get_manga_id(id)
 
+    def aggregate(self, id: str) -> mangadex.InlineResponse200:
+        """Get a summary of volume and chapter info on manga by id."""
+
+        return self.manga.manga_id_aggregate_get(id)
+
+    def authors(self, manga: mangadex.MangaResponse) -> List[str]:
+        """Retreive the author names for a manga.
+
+        Args:
+            manga: The manga response object.
+
+        Returns:
+            A list of author names.
+        """
+
+        author_ids = utils.rselect("author", manga.relationships)
+        authors = self.search.get_author(ids=author_ids)
+
+        return [a.data.attributes.name for a in authors.results]
+
+    def chapters(self, id: str, **criteria) -> mangadex.ChapterList:
+        """Get chapters for a manga by id."""
+
+        utils.convert_datetime(criteria)
+
+        return self.manga.get_manga_id_feed(id, **criteria)
+
     def cover_page(
         self, manga: mangadex.MangaResponse, *, size: Literal["og", "512", "256"] = "og"
     ) -> Optional[str]:
@@ -300,18 +327,6 @@ class MangaMixin:
         return (
             f"https://uploads.mangadex.org/covers/{manga.data.id}/{cover_filename}{ext}"
         )
-
-    def aggregate(self, id: str) -> mangadex.InlineResponse200:
-        """Get a summary of volume and chapter info on manga by id."""
-
-        return self.manga.manga_id_aggregate_get(id)
-
-    def chapters(self, id: str, **criteria) -> mangadex.ChapterList:
-        """Get chapters for a manga by id."""
-
-        utils.convert_datetime(criteria)
-
-        return self.manga.get_manga_id_feed(id, **criteria)
 
     def random(self) -> mangadex.MangaResponse:
         """Get a random manga.
