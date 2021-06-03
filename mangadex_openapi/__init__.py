@@ -130,4 +130,4 @@ from mangadex_openapi.models.user_response import UserResponse
 
 from mangadex_openapi.wrapper.core import QuickClient
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
